@@ -1,0 +1,100 @@
+th {
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgb(70, 58, 58);
+    color: white;
+}
+
+table {
+    border-spacing: 5px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+}
+
+.espace-haut {
+    height: 20px;
+}
+
+.titre {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.margin-top {
+    margin-top: 100px;
+}
+
+.centrer-texte {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.texte-en-gras {
+    font-weight: bold;
+}
+
+.largeur-tableau {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centrer-texte-vertical {
+    margin: auto;
+    line-height: 80px;
+}
+
+.aligner-gauche {
+    text-align: left;
+    margin-left: 10%;
+    display: inline;
+}
+
+.centrer-pagination {
+    margin-left: 42%;
+    margin-top: 30px;
+}
+
+.cache {
+    visibility: hidden;
+}
+
+.pointeur {
+    cursor: pointer;
+}
+
+.largeur-colonne-nom {
+    width: 260px
+}
+
+.largeur-colonne-adresse {
+    width: 300px
+}
+
+.largeur-colonne-note {
+    width: 80px
+}
+
+.bouton-pagination {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.hauteur-minimum {
+    min-height: 760px;
+}

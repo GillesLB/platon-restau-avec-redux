@@ -1,0 +1,59 @@
+<div class="hauteur-minimum">
+
+    <app-menu-gauche></app-menu-gauche>
+
+    <div class="espace-haut"></div>
+
+    <div class="centrer-formulaire margin-bottom {{cacherformulaireNouveauRestaurant}}">
+        <form (ngSubmit)="onSubmit(ajoutRestaurantForm.value)" #ajoutRestaurantForm="ngForm">
+
+            <div class="titre-page">Ajoutez un restaurant : </div>
+
+            <div class="margin-champs">
+                <label class="titre-formulaire" for="nom">Nom du restaurant : </label><span class="etoile-rouge">*</span>
+                <input ngControl="ajoutRestaurantForm.nom" class="largeur-input" type="text" 
+                name="nom" id="nom" [(ngModel)]="ajoutRestaurantForm.nom" required/>
+                <span [hidden]="ajoutRestaurantForm.nom" class="text-danger">Entrez un nom !</span>
+            </div>
+
+            <div class="margin-champs">
+                <label class="titre-formulaire" for="adresse">Adresse du restaurant : </label><span class="etoile-rouge">*</span>
+                <input ngControl="ajoutRestaurantForm.adresse" class="largeur-input" type="text" 
+                name="adresse" id="adresse" [(ngModel)]="ajoutRestaurantForm.adresse" required/>
+                <span [hidden]="ajoutRestaurantForm.adresse" class="text-danger">Entrez une adresse !</span>
+            </div>
+            
+            <div class="margin-champs">
+                <label class="titre-formulaire" for="dateVisite">Date de la visite : </label><span class="etoile-rouge">*</span>
+                <input ngControl="ajoutRestaurantForm.dateVisite" class="largeur-input" type="text" 
+                placeholder="00/00/0000" minlength="10" maxlength="10"
+                name="dateVisite" id="dateVisite" [(ngModel)]="ajoutRestaurantForm.dateVisite" required/>
+                <span [hidden]="ajoutRestaurantForm.dateVisite" class="text-danger">Entrez une date !</span>
+            </div>
+
+            <div class="margin-champs">
+                <label class="titre-formulaire" for="note">Note (optionnel) : </label>
+                <input ngControl="ajoutRestaurantForm.note" class="largeur-input" type="number" 
+                placeholder="De 1 à 5" minlength="1" maxlength="1" pattern="[1-5]"
+                name="note" id="note" [(ngModel)]="ajoutRestaurantForm.note"/>
+            </div>
+
+            <input class="margin-bouton bouton-envoyer-nouveau-restaurant" type="submit"  
+                name="bouton-envoyer" id="bouton-envoyer"
+                [disabled]="!ajoutRestaurantForm.form.valid" value="Envoyer le restaurant"
+                (click)="cacherMessageConfirmationEnvoiRestaurant()"
+            />
+
+        </form>
+    </div>
+
+    <div class="espace-haut"></div>
+
+    <span class={{cacherMessageConfirmationEnvoi}}>
+        <img class="centrer-image" src="assets/images/ajouter.jpg" />
+        <div class="visuel-message-confirmation">Ce restaurant vient d'être envoyé dans la liste.</div>
+    </span>
+
+    <div class="espace-haut"></div>
+
+</div>

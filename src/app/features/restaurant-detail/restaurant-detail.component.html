@@ -1,0 +1,106 @@
+<div class="hauteur-minimum">
+
+  <app-menu-gauche></app-menu-gauche>
+
+  <div class="espace-haut"></div>
+
+
+  <div class="centrer fond-fiche margin-fiche taille-reponse">
+
+      <div class="titre-fiche centrer-texte">Fiche du restaurant</div>
+      <div class="margin-categories">
+        <span class="categories-fiche">Nom de l'établissement : </span>{{restaurant[id].nom}}
+      </div>
+      <div class="margin-categories">
+          <span class="categories-fiche">Adresse : </span>{{restaurant[id].adresse}}
+      </div>
+      <div class="margin-categories">
+          <span class="categories-fiche">Date de visite : </span>{{restaurant[id].dateDerniereVisite}}
+      </div>
+      <div class="margin-categories align">
+        <span class="categories-fiche marge-droite">Note :</span>
+        <span *ngIf="!restaurant[id].note" class="italique"> Pas encore de note ...</span>
+        <span *ngIf="restaurant[id].note"></span>{{restaurant[id].note}}
+      </div>
+      <div class="margin-categories">
+          <span class="categories-fiche">Nombre de visite : </span>{{restaurant[id].nombreVisite}}
+      </div>
+      <div class="margin-categories">
+        <div class="align">
+          <span class="categories-fiche marge-droite">Commentaire(s) :</span>
+          <div *ngIf="restaurant[id].nombreCommentaire === 0" class="italique"> Pas encore de commentaire ...</div>
+        </div>
+        <div *ngFor="let commentaire of restaurant[id].commentaire" class="centrer-commentaire">
+          <ul>
+            <li><span class="categories-fiche">Auteur : </span>{{commentaire.auteur}}</li>
+            <li><span class="categories-fiche">Commentaire : </span>{{commentaire.texte}}</li>
+          </ul>
+        </div>
+      </div>
+    <br />
+    
+  </div>
+
+  <div class="espace-haut"></div>
+
+  <div class="visuel-message-confirmation">
+
+    <div class={{confirmationEnvoiCommentaire}}>
+      <span>Le commentaire a bien été envoyé !</span>
+    </div>
+
+    <div class={{confirmationEnvoiNote}}>
+      <span>La note a bien été envoyée !</span>
+    </div>
+
+  </div>
+
+  <div class="centrer-boutons">
+
+    <span *ngIf="formulaireCommentaire === 'cacher-formulaire-commentaire'">
+      <div class="centrer-texte-vertical aligner-gauche">
+        <span *ngIf="formulaireNote === 'cacher-formulaire-note'" >
+          <input 
+            type="button" value="Ajouter une note" 
+            class="bouton-ajouter-note" (click)="cacherVisibleNote()"
+          />
+        </span>
+        <span *ngIf="formulaireNote !== 'cacher-formulaire-note'" >
+          <input 
+            type="button" value="Annuler cette note" 
+            class="bouton-ajouter-note" (click)="cacherVisibleNote()"
+          />
+        </span>
+      </div>
+    </span>
+
+    <span *ngIf="formulaireNote === 'cacher-formulaire-note'">
+      <div class="centrer-texte-vertical aligner-gauche">
+        <span *ngIf="formulaireCommentaire === 'cacher-formulaire-commentaire'" >
+          <input
+            type="button" value="Ajouter un commentaire" 
+            class="bouton-ajouter-commentaire" (click)="cacherVisibleCommentaire()"
+          />
+        </span>
+        <span *ngIf="formulaireCommentaire !== 'cacher-formulaire-commentaire'">
+          <input
+            type="button" value="Annuler ce commentaire" 
+            class="bouton-ajouter-commentaire" (click)="cacherVisibleCommentaire()"
+          />
+        </span>
+      </div>
+    </span>
+
+  </div>
+
+  <div class="espace-haut"></div>
+
+  <div class={{formulaireCommentaire}}>
+    <app-ajouter-commentaire></app-ajouter-commentaire>
+  </div>
+
+  <div class={{formulaireNote}}>
+    <app-ajouter-note></app-ajouter-note>
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+.fond {
+    background-color: rgb(204, 233, 229);
+}
+
+.toute-la-page {
+    min-height: 100%;
+}
+
+.centrer-texte {
+    text-align: center;
+}
+
+.centrer-image {
+    display: block;
+    margin: auto;
+}
+
+.espace-haut {
+    height: 20px;
+}
+
+.hauteur-minimum {
+    min-height: 760px;
+}

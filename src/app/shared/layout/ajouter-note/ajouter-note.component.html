@@ -1,0 +1,27 @@
+<div class="espace-haut"></div>
+
+<div class="titre-page">Choisissez votre note : </div>
+
+<div class="centrer-formulaire margin-bottom">
+  <form>
+
+    <div *ngFor="let note of notes">
+      <div class="margin-etoile">
+        <label class="titre-formulaire" for="une">{{note.avis}}</label>
+        <input  class="margin-right largeur-input" type="radio" 
+        name="note-radio" id="une" value={{note.note}}
+        (change)="changementEtatBoutonRadio($event)"
+      />
+      </div>
+    </div>
+
+    <input class="margin-bouton bouton-envoyer-note" type="submit"  
+          name="bouton-envoyer" id="bouton-envoyer"
+          value="Envoyer la note" (click)="envoyerNote()"
+          (click)="cacherMessageConfirmationEnvoiNote()"
+    />
+  
+  </form>
+</div>
+
+<div class="espace-haut"></div>

@@ -1,0 +1,26 @@
+.fond-header {
+    background-color: rgb(204, 233, 229);
+}
+
+.texte-header {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.centrer-texte-horizontal {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.centrer-texte-vertical {
+    margin: auto;
+    line-height: 80px;
+}
+
+.hauteur {
+    height: 80px;
+}
+
+.separation-basse {
+    border-bottom: 1px solid rgb(188, 209, 206);
+}

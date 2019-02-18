@@ -1,0 +1,104 @@
+.taille-texte {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.titre-formulaire {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.alignement-vertical {
+    display: block;
+	width: 150px;
+}
+
+.titre-page {
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.centrer-image {
+    display: block;
+    margin: auto;
+    width: 10%;
+    margin-bottom: 30px;
+}
+
+.centrer-formulaire {
+    display: block;
+    margin: auto;
+    background-color: rgb(223, 219, 195);
+    border: 2px solid black;
+    width: 40%;
+}
+
+.espace-haut {
+    height: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.largeur-input {
+    width: 95%;
+}
+
+.margin-champs {
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.margin-texte {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.margin-bouton {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.bouton-envoyer-nouveau-restaurant {
+    background-color: rgb(172, 21, 12);
+    color: white;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.bouton-envoyer-nouveau-restaurant:hover {
+    background-color: rgb(176, 58, 65);
+}
+
+.etoile-rouge {
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 10px;
+    color: red;
+}
+
+.cacher-formulaire-envoi-nouveau-restaurant {
+    display: none;
+}
+
+.cacher-message-confirmation-envoi {
+    display: none;
+}
+
+.visuel-message-confirmation {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(7, 73, 5);
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.hauteur-minimum {
+    min-height: 760px;
+}

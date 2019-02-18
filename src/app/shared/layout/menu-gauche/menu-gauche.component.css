@@ -1,0 +1,35 @@
+.menu-gauche {
+    width: 200px;
+}
+
+.menu-gauche a {
+    background-color: rgb(204, 233, 229);
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.menu-gauche a:hover {
+    background-color: #ccc;
+}
+
+.menu-gauche a.active {
+    background-color: rgb(181, 204, 201);
+    color: white;
+}
+
+.aligne {
+    float: left;
+}
+
+.titre-menu {
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.active {
+    background-color: red;
+}

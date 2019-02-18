@@ -1,0 +1,106 @@
+.centrer-texte {
+    text-align: center;
+}
+
+.taille-texte {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.centrer-image {
+    display: block;
+    margin: auto;
+    width: 10%;
+}
+
+.espace-haut {
+    height: 20px;
+}
+
+.taille-texte {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.titre-formulaire {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.alignement-vertical {
+    display: block;
+	width: 150px;
+}
+
+.titre-page {
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 480px;
+    margin-bottom: 30px;
+}
+
+.centrer-image {
+    display: block;
+    margin: auto;
+    width: 10%;
+    margin-bottom: 30px;
+}
+
+.centrer-formulaire {
+    display: block;
+    margin: auto;
+    background-color: rgb(223, 219, 195);
+    border: 2px solid black;
+    width: 40%;
+}
+
+.espace-haut {
+    height: 20px;
+}
+
+.margin-right {
+    float: right;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.largeur-input {
+    width: 300px;
+    vertical-align: middle;
+}
+
+.margin-etoile {
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.margin-texte {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.margin-bouton {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.margin-alerte {
+    margin-left: 96px;
+}
+
+.bouton-envoyer-note {
+    background-color: rgb(172, 21, 12);
+    color: white;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.bouton-envoyer-note:hover {
+    background-color: rgb(176, 58, 65);
+}

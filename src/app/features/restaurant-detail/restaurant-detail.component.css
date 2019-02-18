@@ -1,0 +1,152 @@
+.centrer {
+    display: block;
+    margin: auto;
+}
+
+.centrer-texte {
+    text-align: center;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.fond-fiche {
+    border: 2px solid black;
+    background-color: rgb(230, 233, 214);
+}
+
+.margin-fiche {
+    margin: auto;
+    width: 60%;
+}
+
+.titre-fiche {
+    font-weight: bold;
+    font-size: 28px;
+    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 150px;
+    margin-left: 40%;
+    background-color: rgb(214, 192, 69);
+}
+
+.categories-fiche {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.taille-reponse {
+    font-size: 20px;
+}
+
+.margin-categories {
+    margin: 20px;
+}
+
+.margin-commentaires {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.align {
+    display: flex;
+}
+
+.aligner-gauche {
+    text-align: left;
+    margin-left: 5%;
+    display: inline;
+}
+
+.marge-droite {
+    margin-right: 5px;
+}
+
+.centrer-bouton {
+    margin: auto;
+}
+
+.centrer-boutons {
+    margin-left: 30%;
+}
+
+.bouton-ajouter-note {
+    background-color: rgb(129, 121, 12);
+    color: white;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.bouton-ajouter-note:hover {
+    background-color: rgb(160, 158, 65);
+}
+
+.bouton-ajouter-commentaire {
+    background-color: rgb(4, 9, 59);
+    color: white;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.bouton-ajouter-commentaire:hover {
+    background-color: rgb(43, 44, 80);
+}
+
+.bouton-retour-liste {
+    background-color: rgb(73, 15, 85);
+    color: white;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.bouton-retour-liste:hover {
+    background-color: rgb(83, 48, 87);
+}
+
+.centrer-commentaire {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.espace-haut {
+    height: 20px;
+}
+
+.italique {
+    font-style: italic;
+}
+
+.cacher-formulaire-commentaire {
+    display: none;
+}
+
+.cacher-formulaire-note {
+    display: none;
+}
+
+.cacher-message-confirmation-envoi-commentaire {
+    display: none;
+}
+
+.cacher-message-confirmation-envoi-note {
+    display: none;
+}
+
+.visuel-message-confirmation {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(7, 73, 5);
+}
+
+.hauteur-minimum {
+    min-height: 760px;
+}

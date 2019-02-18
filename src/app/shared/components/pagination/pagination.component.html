@@ -1,0 +1,18 @@
+<div class="pagination">
+    [count]="someCountVar"
+    [page]="somePageVar"
+    [perPage]="somePerPageVar"
+    [pagesToShow]="5"
+    [loading]="someLoadingVar"
+    (onPrev)="prevPage()"
+    (onNext)="nextPage()"
+    (onPage)="goToPage($event)">
+</div>
+
+<div class="pagination" *ngIf="count > 0">
+    <span>{{ getMin() }} of {{ getMax() }} of {{ count }}</span>
+    <span>{{ totalPages() }} pages</span>
+    <button (click)="onPrev()" [disabled]="page === 1 || loading">Previous</button>
+    <button *ngFor="let pageNum of getPages()" (click)="onPage(pageNum)"></button>
+    <button (click)="onNext()" [disabled]="lastPage() || loading">Next</button>
+  </div>
