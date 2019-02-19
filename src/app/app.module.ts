@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from 'src/app/app.component';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
@@ -23,20 +25,21 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
 import { PaginationService } from './features/pagination.service';
 import { PageAccueilComponent } from './features/page-accueil/page-accueil.component';
 import { MenuGaucheComponent } from './shared/layout/menu-gauche/menu-gauche.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
-const routes: Routes = [
-  { path: '',
-    redirectTo: '/',
-    pathMatch: 'full'
-  },
-  { path: '', component: PageAccueilComponent },
-  { path: 'liste', component: ListeRestaurantsComponent },
-  { path: 'liste/:restaurantId', component: RestaurantDetailComponent },
-  { path: 'ajouter-restaurant', component: AjouterRestaurantComponent },
-  { path: 'supprimer-restaurant', component: SupprimerRestaurantComponent },
-  { path: '**', component: PageNotFoundComponent }
-];
+// const routes: Routes = [
+//   { path: '',
+//     redirectTo: '/',
+//     pathMatch: 'full'
+//   },
+//   { path: '', component: PageAccueilComponent },
+//   { path: 'liste', component: ListeRestaurantsComponent },
+//   { path: 'liste/:restaurantId', component: RestaurantDetailComponent },
+//   { path: 'ajouter-restaurant', component: AjouterRestaurantComponent },
+//   { path: 'supprimer-restaurant', component: SupprimerRestaurantComponent },
+//   { path: '**', component: PageNotFoundComponent }
+// ];
 
 @NgModule({
   declarations: [
@@ -62,10 +65,12 @@ const routes: Routes = [
   imports: [
     NgbModule,
     BrowserModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
+    StoreModule.forRoot({}),
     HttpModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgReduxModule
   ],
   providers: [
     ListeRestaurantsComponent,
