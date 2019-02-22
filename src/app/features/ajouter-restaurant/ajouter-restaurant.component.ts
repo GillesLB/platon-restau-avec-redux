@@ -29,7 +29,7 @@ export class AjouterRestaurantComponent implements OnInit {
     const note = value.note;
     const restaurantId = this.listeRestaurantsComponent.restaurants.length;
     // tslint:disable-next-line:max-line-length
-    this.listeRestaurantsComponent.restaurants.push({'check': false, 'nom': nom, 'adresse': adresse, 'dateDerniereVisite': dateDerniereVisite, 'note': note, 'nombreVisite': null, 'nombreCommentaire': null, 'commentaire': null, 'restaurantId': restaurantId});
+    this.listeRestaurantsComponent.restaurants.push({'nom': nom, 'adresse': adresse, 'dateDerniereVisite': dateDerniereVisite, 'note': note, 'nombreVisite': null, 'nombreCommentaire': null, 'commentaire': null, 'restaurantId': restaurantId});
   }
 
   ngOnInit() {
