@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { restaurants } from 'src/app/core/liste-restaurants';
 import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
 
 @Component({
@@ -16,7 +17,7 @@ export class RestaurantDetailComponent implements OnInit {
   public confirmationEnvoiNote: string;
   public id: string;
 
-  public restaurant = this.restaurantsLRC.restaurants;
+  public restaurant = restaurants;
 
   constructor(
     public restaurantsLRC: ListeRestaurantsComponent,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
-import { ListeRestaurantsComponent } from 'src/app/features/liste-restaurants/liste-restaurants.component';
+import { restaurants } from 'src/app/core/liste-restaurants';
 import { RestaurantDetailComponent } from 'src/app/features/restaurant-detail/restaurant-detail.component';
 
 @Component({
@@ -12,7 +11,6 @@ import { RestaurantDetailComponent } from 'src/app/features/restaurant-detail/re
 export class AjouterCommentaireComponent implements OnInit {
 
   constructor(
-    public listeRestaurantsComponent: ListeRestaurantsComponent,
     public restaurantDetailComponent: RestaurantDetailComponent,
   ) { }
 
@@ -30,9 +28,9 @@ export class AjouterCommentaireComponent implements OnInit {
 
     this.restaurantDetailComponent.formulaireCommentaire = 'cacher-formulaire-commentaire';
     this.restaurantDetailComponent.confirmationEnvoiCommentaire = '';
-    (this.listeRestaurantsComponent.restaurants[this.restaurantDetailComponent.id].commentaire).push({'auteur': auteur, 'texte': texte});
-    const ajoutNombreCommentaire = (this.listeRestaurantsComponent.restaurants[this.restaurantDetailComponent.id].nombreCommentaire) + 1;
-    this.listeRestaurantsComponent.restaurants[this.restaurantDetailComponent.id].nombreCommentaire = ajoutNombreCommentaire;
+    (restaurants[this.restaurantDetailComponent.id].commentaire).push({'auteur': auteur, 'texte': texte});
+    const ajoutNombreCommentaire = (restaurants[this.restaurantDetailComponent.id].nombreCommentaire) + 1;
+    restaurants[this.restaurantDetailComponent.id].nombreCommentaire = ajoutNombreCommentaire;
   }
 
   ngOnInit() {

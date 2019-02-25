@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { restaurants } from 'src/app/core/liste-restaurants';
 import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
 import { RestaurantDetailComponent } from '../restaurant-detail/restaurant-detail.component';
 
@@ -27,9 +29,9 @@ export class AjouterRestaurantComponent implements OnInit {
     const adresse = value.adresse;
     const dateDerniereVisite = value.dateVisite;
     const note = value.note;
-    const restaurantId = this.listeRestaurantsComponent.restaurants.length;
+    const restaurantId = restaurants.length;
     // tslint:disable-next-line:max-line-length
-    this.listeRestaurantsComponent.restaurants.push({'nom': nom, 'adresse': adresse, 'dateDerniereVisite': dateDerniereVisite, 'note': note, 'nombreVisite': null, 'nombreCommentaire': null, 'commentaire': null, 'restaurantId': restaurantId});
+    restaurants.push({'check': false, 'nom': nom, 'adresse': adresse, 'dateDerniereVisite': dateDerniereVisite, 'note': note, 'nombreVisite': null, 'nombreCommentaire': null, 'commentaire': null, 'restaurantId': restaurantId});
   }
 
   ngOnInit() {

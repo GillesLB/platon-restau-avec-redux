@@ -7,11 +7,14 @@
 
     <div *ngFor="let note of notes">
       <div class="margin-etoile">
-        <label class="titre-formulaire" for="une">{{note.avis}}</label>
-        <input  class="margin-right largeur-input" type="radio" 
-        name="note-radio" id="une" value={{note.note}}
-        (change)="changementEtatBoutonRadio($event)"
-      />
+        <label class="titre-formulaire largeur-choix">{{note.avis}}</label>
+        <div class="aligner largeur-input droite">
+          <input  class="droite" type="radio" 
+          name="note-radio" value={{note.note}}
+          (change)="changementEtatBoutonRadio($event)"
+          />
+          <img src={{note.image}} />
+        </div>
       </div>
     </div>
 

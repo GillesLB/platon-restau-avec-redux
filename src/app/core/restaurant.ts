@@ -1,5 +1,4 @@
 export class Restaurant {
-
     constructor(
         public check: boolean,
         public nom: string,
@@ -11,5 +10,4 @@ export class Restaurant {
         public commentaire: any[],
         public restaurantId: number
     ) {}
-
 }

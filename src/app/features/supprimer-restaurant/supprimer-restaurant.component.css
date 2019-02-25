@@ -131,6 +131,10 @@ tr:nth-child(odd) {
     display: none;
 }
 
+.cacher-pagination {
+    display: none;
+}
+
 .cacher-tableau-restaurants {
     display:none;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ListeRestaurantsComponent } from 'src/app/features/liste-restaurants/liste-restaurants.component';
+import { restaurants } from 'src/app/core/liste-restaurants';
 import { RestaurantDetailComponent } from 'src/app/features/restaurant-detail/restaurant-detail.component';
 import { Note } from 'src/app/core/note';
 
@@ -14,15 +14,14 @@ export class AjouterNoteComponent implements OnInit {
   public nouvelleNote: number;
 
   public notes: Note[] = [
-    {'avis': '😒 Beurk : ', 'note': 1},
-    {'avis': '🤨 Bof : ', 'note': 2},
-    {'avis': '🙂 Correct : ', 'note': 3},
-    {'avis': '😋 Bien : ', 'note': 4},
-    {'avis': '😍 Extra : ', 'note': 5}
+    {'avis': '😒 Beurk : ', 'note': 1, 'image': 'assets/images/1 etoile.png'},
+    {'avis': '🤨 Bof : ', 'note': 2, 'image': 'assets/images/2 etoiles.png'},
+    {'avis': '🙂 Correct : ', 'note': 3, 'image': 'assets/images/3 etoiles.png'},
+    {'avis': '😋 Bien : ', 'note': 4, 'image': 'assets/images/4 etoiles.png'},
+    {'avis': '😍 Extra : ', 'note': 5, 'image': 'assets/images/5 etoiles.png'}
   ];
 
   constructor(
-    public listeRestaurantsComponent: ListeRestaurantsComponent,
     public restaurantDetailComponent: RestaurantDetailComponent,
   ) { }
 
@@ -31,22 +30,20 @@ export class AjouterNoteComponent implements OnInit {
   }
 
   cacherMessageConfirmationEnvoiNote() {
-    console.log('1',this.restaurantDetailComponent.confirmationEnvoiNote)
     if (this.restaurantDetailComponent.confirmationEnvoiNote === 'cacher-message-confirmation-envoi-note') {
       this.restaurantDetailComponent.confirmationEnvoiNote = '';
     } else {
       this.restaurantDetailComponent.confirmationEnvoiNote = 'cacher-message-confirmation-envoi-note';
     }
-    console.log('2', this.restaurantDetailComponent.confirmationEnvoiNote)
   }
 
   envoyerNote() {
     this.restaurantDetailComponent.formulaireNote = 'cacher-formulaire-note';
-    const noteRestaurant = this.listeRestaurantsComponent.restaurants[this.restaurantDetailComponent.id].note;
+    const noteRestaurant = restaurants[this.restaurantDetailComponent.id].note;
     if (noteRestaurant) {
       this.nouvelleNote = Math.ceil((noteRestaurant * 1 + this.nouvelleNote * 1) / 2);
     }
-    this.listeRestaurantsComponent.restaurants[this.restaurantDetailComponent.id].note = this.nouvelleNote;
+    restaurants[this.restaurantDetailComponent.id].note = this.nouvelleNote;
   }
 
   ngOnInit() {

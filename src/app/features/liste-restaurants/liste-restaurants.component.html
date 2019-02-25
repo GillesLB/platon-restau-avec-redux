@@ -21,18 +21,18 @@
     </thead>
 
     <tbody>
-      <ng-container *ngFor="let restaurantVisible of restaurantsVisibles">
+      <ng-container *ngFor="let restaurant of restaurants | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
         <tr>
-          <td class="texte-en-gras largeur-colonne-nom">{{restaurantVisible.nom}}</td>
-          <td class="largeur-colonne-adresse">{{restaurantVisible.adresse}}</td> 
-          <td class="centrer-texte">{{restaurantVisible.dateDerniereVisite}}</td>
-          <td *ngIf="restaurantVisible.note" class="centrer-texte largeur-colonne-note">{{restaurantVisible.note}} / 5</td>
-          <td *ngIf="!restaurantVisible.note" class="centrer-texte largeur-colonne-note">-</td>
-          <td class="centrer-texte">{{restaurantVisible.nombreVisite}}</td>
-          <td *ngIf="restaurantVisible.nombreCommentaire" class="centrer-texte largeur-colonne-note">{{restaurantVisible.nombreCommentaire}}</td>
-          <td *ngIf="!restaurantVisible.nombreCommentaire" class="centrer-texte largeur-colonne-note">-</td>
+          <td class="texte-en-gras largeur-colonne-nom">{{restaurant.nom}}</td>
+          <td class="largeur-colonne-adresse">{{restaurant.adresse}}</td> 
+          <td class="centrer-texte">{{restaurant.dateDerniereVisite}}</td>
+          <td *ngIf="restaurant.note" class="centrer-texte largeur-colonne-note">{{restaurant.note}} / 5</td>
+          <td *ngIf="!restaurant.note" class="centrer-texte largeur-colonne-note">-</td>
+          <td class="centrer-texte">{{restaurant.nombreVisite}}</td>
+          <td *ngIf="restaurant.nombreCommentaire" class="centrer-texte largeur-colonne-note">{{restaurant.nombreCommentaire}}</td>
+          <td *ngIf="!restaurant.nombreCommentaire" class="centrer-texte largeur-colonne-note">-</td>
           <td class="centrer-texte">
-            <a [routerLink]="['/liste', restaurantVisible.restaurantId]"><app-bouton></app-bouton></a>
+            <a [routerLink]="['/liste', restaurant.restaurantId]"><app-bouton></app-bouton></a>
           </td>
         </tr>
       </ng-container>
@@ -40,13 +40,17 @@
 
   </table>
 
-  <nav aria-label="Pagination liste restaurants" class="centrer-pagination">
-    <ul *ngIf="nombreRestaurantTotal > 5" class="pagination">
-      <li class="page-item bouton-pagination"><a class="page-link pointeur" [ngClass]="{'cache': pageEnCours === 1}" (click)="pagePrecedente()"><<  Précédent</a></li>
-      <!-- TODO rendre la pagination dynamique -->
-      <li class="page-item bouton-pagination"><a class="page-link pointeur" [ngClass]="{'cache': pageEnCours === pageMax}" (click)="pageSuivante()">Suivant  >></a></li>
-    </ul>
-  </nav>
+  <div class="espace-haut"></div>
+
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="restaurants.length"
+    [rotate]="true"
+    [boundaryLinks]="true"
+  >
+  </ngb-pagination>
 
   <div class="espace-haut"></div>
   
