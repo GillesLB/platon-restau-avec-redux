@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { restaurants } from 'src/app/core/liste-restaurants';
+import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
 
 @Component({
   selector: 'app-supprimer-restaurant',

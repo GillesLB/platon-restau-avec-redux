@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { restaurants } from 'src/app/core/liste-restaurants';
+import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
 import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
 
 @Component({

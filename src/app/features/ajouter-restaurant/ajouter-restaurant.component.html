@@ -41,7 +41,7 @@
             <input class="margin-bouton bouton-envoyer-nouveau-restaurant" type="submit"  
                 name="bouton-envoyer" id="bouton-envoyer"
                 [disabled]="!ajoutRestaurantForm.form.valid" value="Envoyer le restaurant"
-                (click)="cacherMessageConfirmationEnvoiRestaurant()"
+                (click)="cacherMessageConfirmationEnvoiRestaurant(); ajouterRestaurant()"
             />
 
         </form>

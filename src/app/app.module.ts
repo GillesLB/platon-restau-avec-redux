@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { routes } from 'src/app/core/routes';
 import { AppComponent } from 'src/app/app.component';
@@ -23,6 +25,8 @@ import { AjouterCommentaireComponent } from './shared/layout/ajouter-commentaire
 import { PaginationService } from './features/pagination.service';
 import { PageAccueilComponent } from './features/page-accueil/page-accueil.component';
 import { MenuGaucheComponent } from './shared/layout/menu-gauche/menu-gauche.component';
+import { restaurantReducer } from './core/reducers/restaurant.reducer';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,11 @@ import { MenuGaucheComponent } from './shared/layout/menu-gauche/menu-gauche.com
     NgbModule,
     BrowserModule,
     RouterModule.forRoot(routes),
+    StoreModule.forRoot({restaurant: restaurantReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
     HttpModule,
     HttpClientModule,
     FormsModule

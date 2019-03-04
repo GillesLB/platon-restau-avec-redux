@@ -21,7 +21,7 @@
     </thead>
 
     <tbody>
-      <ng-container *ngFor="let restaurant of restaurants | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <ng-container *ngFor="let restaurant of (restaurant$ | async).data | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
         <tr>
           <td class="texte-en-gras largeur-colonne-nom">{{restaurant.nom}}</td>
           <td class="largeur-colonne-adresse">{{restaurant.adresse}}</td> 
@@ -46,7 +46,7 @@
     class="d-flex justify-content-center"
     [(page)]="page"
     [pageSize]="pageSize"
-    [collectionSize]="restaurants.length"
+    [collectionSize]="(restaurant$ | async).data.length"
     [rotate]="true"
     [boundaryLinks]="true"
   >
