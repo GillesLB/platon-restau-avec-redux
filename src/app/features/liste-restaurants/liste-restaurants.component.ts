@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Store, select } from '@ngrx/store';
+import { Store, select, reduceState } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
 import { RestaurantRead } from 'src/app/core/actions/restaurant.action';
 
@@ -14,21 +15,21 @@ import { RestaurantRead } from 'src/app/core/actions/restaurant.action';
 export class ListeRestaurantsComponent implements OnInit {
 
   page = 1;
-  pageSize = 5;
+  pageSize = 8;
 
   restaurant$: Observable<object>;
 
   constructor(
     private store: Store<{restaurant: object}>
-  ) { 
-   this.restaurant$ = store.pipe(select('restaurant'));
+  ) {
+    this.restaurant$ = store.pipe(select('restaurant'));
   }
 
   montrerListe() {
     this.store.dispatch(new RestaurantRead());
   }
-  
-  ngOnInit() { 
+
+  ngOnInit() {
     this.montrerListe();
   }
 

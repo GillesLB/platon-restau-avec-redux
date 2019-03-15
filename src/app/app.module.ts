@@ -17,7 +17,6 @@ import { PageDefautComponent } from 'src/app/shared/layout/page-defaut/page-defa
 import { ListeRestaurantsComponent } from 'src/app/features/liste-restaurants/liste-restaurants.component';
 import { PageNotFoundComponent } from 'src/app/features/page-not-found/page-not-found.component';
 import { RestaurantDetailComponent } from './features/restaurant-detail/restaurant-detail.component';
-import { BoutonComponent } from './shared/components/bouton/bouton.component';
 import { AjouterRestaurantComponent } from './features/ajouter-restaurant/ajouter-restaurant.component';
 import { SupprimerRestaurantComponent } from './features/supprimer-restaurant/supprimer-restaurant.component';
 import { AjouterNoteComponent } from './shared/layout/ajouter-note/ajouter-note.component';
@@ -27,6 +26,8 @@ import { PageAccueilComponent } from './features/page-accueil/page-accueil.compo
 import { MenuGaucheComponent } from './shared/layout/menu-gauche/menu-gauche.component';
 import { restaurantReducer } from './core/reducers/restaurant.reducer';
 import { environment } from 'src/environments/environment.prod';
+import { MomentModule } from 'ngx-moment';
+import { TabsetComponent } from './shared/layout/tabset/tabset.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,13 @@ import { environment } from 'src/environments/environment.prod';
     ListeRestaurantsComponent,
     PageNotFoundComponent,
     RestaurantDetailComponent,
-    BoutonComponent,
     AjouterRestaurantComponent,
     SupprimerRestaurantComponent,
     AjouterNoteComponent,
     AjouterCommentaireComponent,
     PageAccueilComponent,
-    MenuGaucheComponent
+    MenuGaucheComponent,
+    TabsetComponent,
   ],
   exports: [
     RouterModule
@@ -59,7 +60,12 @@ import { environment } from 'src/environments/environment.prod';
     }),
     HttpModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MomentModule.forRoot({
+      relativeTimeThresholdOptions: {
+        'm': 59
+      }
+    })
   ],
   providers: [
     ListeRestaurantsComponent,

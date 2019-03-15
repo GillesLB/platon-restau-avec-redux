@@ -1,12 +1,14 @@
-<div class="hauteur-minimum">
+<app-menu-gauche></app-menu-gauche>
 
-  <app-menu-gauche></app-menu-gauche>
-  
+<app-tabset></app-tabset>
+
+<div class="hauteur-minimum principal">
+
   <div class="espace-haut"></div>
 
   <div class="titre">Liste des restaurants :</div>
 
-  <table class="largeur-tableau">
+  <table class="largeur-tableau arrondi">
 
     <thead class="centrer-texte">
       <tr>
@@ -15,7 +17,7 @@
         <th>Visité le</th>
         <th>Note</th>
         <th>Nb visites</th>
-        <th>Nb comm.</th>
+        <th>Comm.</th>
         <th>Détail</th>
       </tr>
     </thead>
@@ -25,14 +27,18 @@
         <tr>
           <td class="texte-en-gras largeur-colonne-nom">{{restaurant.nom}}</td>
           <td class="largeur-colonne-adresse">{{restaurant.adresse}}</td> 
-          <td class="centrer-texte">{{restaurant.dateDerniereVisite}}</td>
+          <td class="centrer-texte">{{restaurant.dateDerniereVisite | amParse:'DD/MM/YYYY' | amDateFormat: 'DD/MM/YY'}}</td>
           <td *ngIf="restaurant.note" class="centrer-texte largeur-colonne-note">{{restaurant.note}} / 5</td>
           <td *ngIf="!restaurant.note" class="centrer-texte largeur-colonne-note">-</td>
           <td class="centrer-texte">{{restaurant.nombreVisite}}</td>
           <td *ngIf="restaurant.nombreCommentaire" class="centrer-texte largeur-colonne-note">{{restaurant.nombreCommentaire}}</td>
           <td *ngIf="!restaurant.nombreCommentaire" class="centrer-texte largeur-colonne-note">-</td>
           <td class="centrer-texte">
-            <a [routerLink]="['/liste', restaurant.restaurantId]"><app-bouton></app-bouton></a>
+            <a [routerLink]="['/liste', restaurant.restaurantId]">
+              <input class="btn btn-primary bouton-detail" type="button"  
+              name="bouton-detail" id="bouton-detail" value="Détail"
+              />
+            </a>
           </td>
         </tr>
       </ng-container>

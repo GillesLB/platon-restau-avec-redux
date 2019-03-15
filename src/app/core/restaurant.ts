@@ -1,4 +1,17 @@
-export class Restaurant {
+
+export interface IRestaurant {
+    check: boolean;
+    nom: string;
+    adresse: string;
+    dateDerniereVisite: string;
+    note: number;
+    nombreVisite: number;
+    nombreCommentaire: number;
+    commentaire: any[];
+    restaurantId: number;
+}
+
+export class Restaurant implements IRestaurant {
     constructor(
         public check: boolean,
         public nom: string,

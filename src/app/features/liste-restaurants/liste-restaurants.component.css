@@ -1,7 +1,8 @@
 th {
     font-weight: bold;
     font-size: 20px;
-    background-color: rgb(70, 58, 58);
+    background-color: rgb(134, 89, 89);
+    font-family: 'Comic sans MS';
     color: white;
 }
 
@@ -38,7 +39,7 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: rgb(178, 207, 204);
 }
 
 tr:nth-child(odd) {
@@ -50,8 +51,7 @@ tr:nth-child(odd) {
 }
 
 .largeur-tableau {
-    margin-left: auto;
-    margin-right: auto;
+    margin-right: 10px;
 }
 
 .centrer-texte-vertical {
@@ -81,11 +81,22 @@ tr:nth-child(odd) {
     width: 80px
 }
 
-.bouton-pagination {
-    margin-left: 20px;
-    margin-right: 20px;
+.hauteur-minimum {
+    min-height: 790px;
 }
 
-.hauteur-minimum {
-    min-height: 760px;
+.principal{
+    margin-left: 230px;
+}
+
+.bouton-detail {
+    background-color: rgb(66, 66, 189);
+    border: 1px solid rgb(66, 66, 189);
+    width: 65px;
+    height: 35px;
+}
+
+.bouton-detail:hover {
+    background-color: rgb(111, 111, 255);
+    border: 1px solid rgb(111, 111, 255);
 }

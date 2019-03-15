@@ -32,7 +32,7 @@
     margin: auto;
     background-color: rgb(223, 219, 195);
     border: 2px solid black;
-    width: 40%;
+    width: 50%;
 }
 
 .espace-haut {
@@ -71,14 +71,21 @@
     margin-left: 96px;
 }
 
-.bouton-envoyer-commentaire {
-    background-color: rgb(172, 21, 12);
-    color: white;
-    width: 200px;
-    height: 30px;
-    cursor: pointer;
+.principal{
+    margin-left: 210px;
 }
 
-.bouton-envoyer-commentaire:hover {
+.margin-bouton-envoyer{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 20px;
+    background-color: rgb(172, 21, 12);
+    border: 1px solid rgb(172, 21, 12);
+    width: 50%;
+    height: 40px;
+}
+
+.margin-bouton-envoyer:hover {
     background-color: rgb(176, 58, 65);
+    border: 1px solid rgb(176, 58, 65);
 }

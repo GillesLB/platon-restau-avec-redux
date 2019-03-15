@@ -1,5 +1,5 @@
 .fond-footer {
-    background-color: rgb(204, 233, 229);
+    background-color: rgb(236, 250, 248);
 }
 
 .texte-footer {
@@ -18,7 +18,7 @@
 
 .centrer-texte-vertical {
     margin: auto;
-    line-height: 80px;
+    line-height: 50px;
 }
 
 .texte-gauche {
@@ -31,8 +31,4 @@
     text-align: right;
     margin-right: 5%;
     float: right;
-}
-
-.separation-haute {
-    border-top: 1px solid rgb(188, 209, 206);
 }

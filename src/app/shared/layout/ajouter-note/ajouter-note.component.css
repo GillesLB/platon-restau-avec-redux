@@ -35,7 +35,7 @@
 .titre-page {
     font-weight: bold;
     font-size: 22px;
-    margin-left: 480px;
+    text-align: center;
     margin-bottom: 30px;
 }
 
@@ -51,7 +51,7 @@
     margin: auto;
     background-color: rgb(223, 219, 195);
     border: 2px solid black;
-    width: 40%;
+    width: 45%;
 }
 
 .espace-haut {
@@ -84,25 +84,13 @@
     margin-bottom: 30px;
 }
 
-.margin-bouton {
+.margin-bouton-envoyer {
     margin-left: 20px;
     margin-bottom: 30px;
 }
 
 .margin-alerte {
     margin-left: 96px;
-}
-
-.bouton-envoyer-note {
-    background-color: rgb(172, 21, 12);
-    color: white;
-    width: 200px;
-    height: 30px;
-    cursor: pointer;
-}
-
-.bouton-envoyer-note:hover {
-    background-color: rgb(153, 63, 69);
 }
 
 .aligner {
@@ -116,4 +104,23 @@
 
 .droite {
     margin-right: 20px;
+}
+
+.principal{
+    margin-left: 210px;
+}
+
+.margin-bouton-envoyer{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 20px;
+    background-color: rgb(172, 21, 12);
+    border: 1px solid rgb(172, 21, 12);
+    width: 50%;
+    height: 40px;
+}
+
+.margin-bouton-envoyer:hover {
+    background-color: rgb(176, 58, 65);
+    border: 1px solid rgb(176, 58, 65);
 }

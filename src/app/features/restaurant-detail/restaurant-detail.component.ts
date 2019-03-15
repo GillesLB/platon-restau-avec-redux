@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
-import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+
+import { ListeRestaurantsComponent } from 'src/app/features/liste-restaurants/liste-restaurants.component';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -11,25 +13,38 @@ import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurant
 })
 export class RestaurantDetailComponent implements OnInit {
 
+  public cacherFiche: string;
   public formulaireCommentaire: string;
   public formulaireNote: string;
   public confirmationEnvoiCommentaire: string;
   public confirmationEnvoiNote: string;
   public id: string;
 
-  public restaurant = restaurants;
+  restaurant$: Observable<object>;
 
   constructor(
     public restaurantsLRC: ListeRestaurantsComponent,
-    private route: ActivatedRoute
-  ) {  }
+    private route: ActivatedRoute,
+    private store: Store<{restaurant: object}>
+  ) {
+    this.restaurant$ = store.pipe(select('restaurant'));
+  }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('restaurantId');
+    this.cacherFiche = '';
     this.formulaireCommentaire = 'cacher-formulaire-commentaire';
     this.formulaireNote = 'cacher-formulaire-note';
     this.confirmationEnvoiCommentaire = 'cacher-message-confirmation-envoi-commentaire';
     this.confirmationEnvoiNote = 'cacher-message-confirmation-envoi-note';
+  }
+
+  cacherFicheRestaurant() {
+    if (this.cacherFiche === 'cacher-fiche') {
+      this.cacherFiche = '';
+    } else {
+      this.cacherFiche = 'cacher-fiche';
+    }
   }
 
   cacherVisibleNote() {

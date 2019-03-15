@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+
+import { restaurants } from 'src/app/core/liste-restaurants';
 import { RestaurantDetailComponent } from 'src/app/features/restaurant-detail/restaurant-detail.component';
+import { ICommentaire, Commentaire } from 'src/app/core/commentaire';
+import { CommentAdd } from 'src/app/core/actions/restaurant.action';
 
 @Component({
   selector: 'app-ajouter-commentaire',
@@ -10,9 +15,16 @@ import { RestaurantDetailComponent } from 'src/app/features/restaurant-detail/re
 })
 export class AjouterCommentaireComponent implements OnInit {
 
+  restaurants = restaurants;
+  commentaireAAjouter: Commentaire;
+  restaurant$: Observable<object>;
+
   constructor(
     public restaurantDetailComponent: RestaurantDetailComponent,
-  ) { }
+    private store: Store<{restaurant: object}>
+  ) {
+    this.restaurant$ = store.pipe(select('restaurant'));
+  }
 
   cacherMessageConfirmationEnvoiCommentaire() {
     if (this.restaurantDetailComponent.confirmationEnvoiCommentaire === 'cacher-message-confirmation-envoi-commentaire') {
@@ -31,6 +43,7 @@ export class AjouterCommentaireComponent implements OnInit {
     (restaurants[this.restaurantDetailComponent.id].commentaire).push({'auteur': auteur, 'texte': texte});
     const ajoutNombreCommentaire = (restaurants[this.restaurantDetailComponent.id].nombreCommentaire) + 1;
     restaurants[this.restaurantDetailComponent.id].nombreCommentaire = ajoutNombreCommentaire;
+    this.store.dispatch(new CommentAdd(this.restaurants));
   }
 
   ngOnInit() {

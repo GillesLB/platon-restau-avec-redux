@@ -14,8 +14,8 @@
 
 .centrer-image {
     display: block;
-    margin-left: 570px;
-    width: 10%;
+    margin: auto;
+    width: 20%;
     margin-bottom: 30px;
 }
 
@@ -24,5 +24,9 @@
 }
 
 .hauteur-minimum {
-    min-height: 760px;
+    min-height: 790px;
+}
+
+.principal{
+    margin-left: 210px;
 }

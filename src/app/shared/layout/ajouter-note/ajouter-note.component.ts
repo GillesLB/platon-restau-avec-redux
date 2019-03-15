@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
+import { restaurants } from 'src/app/core/liste-restaurants';
 import { RestaurantDetailComponent } from 'src/app/features/restaurant-detail/restaurant-detail.component';
 import { Note } from 'src/app/core/note';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { NoteAdd } from 'src/app/core/actions/restaurant.action';
 
 @Component({
   selector: 'app-ajouter-note',
@@ -11,7 +14,11 @@ import { Note } from 'src/app/core/note';
 })
 export class AjouterNoteComponent implements OnInit {
 
-  public nouvelleNote: number;
+  nouvelleNote: number;
+  restaurants = restaurants;
+  noteAAjouter: number;
+  restaurant$: Observable<object>;
+  formulaireCommentaire = 'cacher-formulaire-commentaire';
 
   public notes: Note[] = [
     {'avis': '😒 Beurk : ', 'note': 1, 'image': 'assets/images/1 etoile.png'},
@@ -23,7 +30,10 @@ export class AjouterNoteComponent implements OnInit {
 
   constructor(
     public restaurantDetailComponent: RestaurantDetailComponent,
-  ) { }
+    private store: Store<{restaurant: object}>
+  ) {
+    this.restaurant$ = store.pipe(select('restaurant'));
+  }
 
   changementEtatBoutonRadio(event) {
     this.nouvelleNote = event.target.value;
@@ -44,6 +54,7 @@ export class AjouterNoteComponent implements OnInit {
       this.nouvelleNote = Math.ceil((noteRestaurant * 1 + this.nouvelleNote * 1) / 2);
     }
     restaurants[this.restaurantDetailComponent.id].note = this.nouvelleNote;
+    this.store.dispatch(new NoteAdd(this.restaurants));
   }
 
   ngOnInit() {

@@ -1,36 +1,36 @@
-<div class="hauteur-minimum">
+<app-menu-gauche></app-menu-gauche>
 
-  <app-menu-gauche></app-menu-gauche>
+<div class="hauteur-minimum principal">
 
   <div class="espace-haut"></div>
 
 
-  <div class="centrer fond-fiche margin-fiche taille-reponse">
+  <div class="centrer fond-fiche margin-fiche taille-reponse {{cacherFiche}}">
 
       <div class="titre-fiche centrer-texte">Fiche du restaurant</div>
       <div class="margin-categories">
-        <span class="categories-fiche">Nom de l'établissement : </span>{{restaurant[id].nom}}
+        <span class="categories-fiche">Nom de l'établissement : </span>{{(restaurant$ | async).data[id].nom}}
       </div>
       <div class="margin-categories">
-          <span class="categories-fiche">Adresse : </span>{{restaurant[id].adresse}}
+          <span class="categories-fiche">Adresse : </span>{{(restaurant$ | async).data[id].adresse}}
       </div>
       <div class="margin-categories">
-          <span class="categories-fiche">Date de visite : </span>{{restaurant[id].dateDerniereVisite}}
+          <span class="categories-fiche">Date de visite : </span>{{(restaurant$ | async).data[id].dateDerniereVisite}}
       </div>
       <div class="margin-categories align">
         <span class="categories-fiche marge-droite">Note :</span>
-        <span *ngIf="!restaurant[id].note" class="italique"> Pas encore de note ...</span>
-        <span *ngIf="restaurant[id].note"></span>{{restaurant[id].note}}
+        <span *ngIf="!(restaurant$ | async).data[id].note" class="italique"> Pas encore de note ...</span>
+        <span *ngIf="(restaurant$ | async).data[id].note"></span>{{(restaurant$ | async).data[id].note}}
       </div>
       <div class="margin-categories">
-          <span class="categories-fiche">Nombre de visite : </span>{{restaurant[id].nombreVisite}}
+          <span class="categories-fiche">Nombre de visite : </span>{{(restaurant$ | async).data[id].nombreVisite}}
       </div>
       <div class="margin-categories">
         <div class="align">
           <span class="categories-fiche marge-droite">Commentaire(s) :</span>
-          <div *ngIf="restaurant[id].nombreCommentaire === 0" class="italique"> Pas encore de commentaire ...</div>
+          <div *ngIf="(restaurant$ | async).data[id].nombreCommentaire === 0" class="italique"> Pas encore de commentaire ...</div>
         </div>
-        <div *ngFor="let commentaire of restaurant[id].commentaire" class="centrer-commentaire">
+        <div *ngFor="let commentaire of (restaurant$ | async).data[id].commentaire" class="centrer-commentaire">
           <ul>
             <li><span class="categories-fiche">Auteur : </span>{{commentaire.auteur}}</li>
             <li><span class="categories-fiche">Commentaire : </span>{{commentaire.texte}}</li>
@@ -49,46 +49,42 @@
       <span>Le commentaire a bien été envoyé !</span>
     </div>
 
-    <div class={{confirmationEnvoiNote}}>
-      <span>La note a bien été envoyée !</span>
-    </div>
+    <ngb-alert class="visuel-message-confirmation {{confirmationEnvoiNote}}" type="success" [dismissible]="false">
+      La note a bien été envoyée !
+    </ngb-alert>
 
   </div>
 
-  <div class="centrer-boutons">
+  <div>
 
     <span *ngIf="formulaireCommentaire === 'cacher-formulaire-commentaire'">
-      <div class="centrer-texte-vertical aligner-gauche">
         <span *ngIf="formulaireNote === 'cacher-formulaire-note'" >
           <input 
             type="button" value="Ajouter une note" 
-            class="bouton-ajouter-note" (click)="cacherVisibleNote()"
+            class="btn btn-primary margin-bouton-note" (click)="cacherVisibleNote(); cacherFicheRestaurant()"
           />
         </span>
         <span *ngIf="formulaireNote !== 'cacher-formulaire-note'" >
           <input 
             type="button" value="Annuler cette note" 
-            class="bouton-ajouter-note" (click)="cacherVisibleNote()"
+            class="btn btn-primary margin-bouton-note-seul" (click)="cacherVisibleNote(); cacherFicheRestaurant()"
           />
         </span>
-      </div>
     </span>
 
     <span *ngIf="formulaireNote === 'cacher-formulaire-note'">
-      <div class="centrer-texte-vertical aligner-gauche">
-        <span *ngIf="formulaireCommentaire === 'cacher-formulaire-commentaire'" >
+        <span class="aligner" *ngIf="formulaireCommentaire === 'cacher-formulaire-commentaire'" >
           <input
             type="button" value="Ajouter un commentaire" 
-            class="bouton-ajouter-commentaire" (click)="cacherVisibleCommentaire()"
+            class="btn btn-primary margin-bouton-commentaire" (click)="cacherVisibleCommentaire(); cacherFicheRestaurant()"
           />
         </span>
-        <span *ngIf="formulaireCommentaire !== 'cacher-formulaire-commentaire'">
+        <span class="centrer-bouton" *ngIf="formulaireCommentaire !== 'cacher-formulaire-commentaire'">
           <input
             type="button" value="Annuler ce commentaire" 
-            class="bouton-ajouter-commentaire" (click)="cacherVisibleCommentaire()"
+            class="btn btn-primary margin-bouton-commentaire-seul" (click)="cacherVisibleCommentaire(); cacherFicheRestaurant()"
           />
         </span>
-      </div>
     </span>
 
   </div>

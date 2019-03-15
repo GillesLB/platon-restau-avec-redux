@@ -1,37 +1,35 @@
-import { Action } from '@ngrx/store';
-
-import { INITIAL_STATE } from 'src/app/core/store/INITIAL_STATE';
 import { ACTIONS } from 'src/app/core/actions/ACTIONS';
-import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
-import { AjouterRestaurantComponent } from 'src/app/features/ajouter-restaurant/ajouter-restaurant.component';
+import { INITIAL_STATE } from 'src/app/core/store/INITIAL_STATE';
+import { ActionsRestaurantUnion } from 'src/app/core/actions/restaurant.action';
 
-console.log('A: ', AjouterRestaurantComponent);
-
-export function restaurantReducer(state = INITIAL_STATE, action: Action) {
+export function restaurantReducer(state = INITIAL_STATE, action: ActionsRestaurantUnion) {
     switch (action.type) {
         case ACTIONS.CRUD.GET_RESTAURANT_READ:
-            return {
-                ...state,
-                data: state.data = restaurants
-            };
+            return state;
         case ACTIONS.CRUD.GET_RESTAURANT_ADD:
+            // Récupération des datas
+            const restaurantAAjouter = action.payload;
             return {
                 // "clonage" du state
                 ...state,
                 // modification de la donnée data du state
                 // et ajout de la donnée (ici, restaurantAAjouter) à la fin du tableau
-                data: [...state.data, AjouterRestaurantComponent.restaurantAAjouter]
+                data: [...state.data, restaurantAAjouter]
             };
         case ACTIONS.CRUD.GET_RESTAURANT_DELETE:
-            const top: any[] = [];
-            for (let i = 0; i < restaurants.length; i++) {
-                if (restaurants[i].note > 3) {
-                    top.push(restaurants[i]);
-                }
-            }
+            const restaurantASupprimer = action.payload;
             return {
-                ...state,
-                data: state.data = top
+                data: restaurantASupprimer
+            };
+        case ACTIONS.LIST.GET_COMMENT_ADD:
+            const commentaireAAjouter = action.payload;
+            return {
+                data: commentaireAAjouter
+            };
+        case ACTIONS.LIST.GET_NOTE_ADD:
+            const noteAAjouter = action.payload;
+            return {
+                data: noteAAjouter
             };
         default:
             return state;

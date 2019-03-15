@@ -28,7 +28,8 @@ a:link {
     border: 2px solid black;
     border-radius: 5px;
     width: 150px;
-    margin-left: 40%;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgb(214, 192, 69);
 }
 
@@ -68,49 +69,6 @@ a:link {
     margin: auto;
 }
 
-.centrer-boutons {
-    margin-left: 30%;
-}
-
-.bouton-ajouter-note {
-    background-color: rgb(129, 121, 12);
-    color: white;
-    width: 200px;
-    height: 30px;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.bouton-ajouter-note:hover {
-    background-color: rgb(160, 158, 65);
-}
-
-.bouton-ajouter-commentaire {
-    background-color: rgb(4, 9, 59);
-    color: white;
-    width: 200px;
-    height: 30px;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.bouton-ajouter-commentaire:hover {
-    background-color: rgb(43, 44, 80);
-}
-
-.bouton-retour-liste {
-    background-color: rgb(73, 15, 85);
-    color: white;
-    width: 200px;
-    height: 30px;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.bouton-retour-liste:hover {
-    background-color: rgb(83, 48, 87);
-}
-
 .centrer-commentaire {
     margin-left: 20px;
     margin-top: 10px;
@@ -140,13 +98,78 @@ a:link {
     display: none;
 }
 
-.visuel-message-confirmation {
+.cacher-fiche{
+    display: none;
+}
+
+.visuel-message-confirmation{
     text-align: center;
     font-size: 22px;
     font-weight: bold;
     color: rgb(7, 73, 5);
+    margin-bottom: 20px;
 }
 
 .hauteur-minimum {
-    min-height: 760px;
+    min-height: 790px;
+}
+
+.principal{
+    margin-left: 210px;
+}
+
+.margin-bouton-note{
+    margin-left: 25%;
+    margin-right: 5%;
+    background-color: rgb(129, 121, 12);
+    border: 1px solid rgb(129, 121, 12);
+    width: 20%;
+    height: 40px;
+}
+
+.margin-bouton-note:hover {
+    background-color: rgb(160, 158, 65);
+    border: 1px solid rgb(160, 158, 65);
+}
+
+.margin-bouton-note-seul{
+    margin-left: 40%;
+    margin-right: 40%;
+    background-color: rgb(129, 121, 12);
+    border: 1px solid rgb(129, 121, 12);
+    width: 20%;
+    height: 40px;
+}
+
+.margin-bouton-note-seul:hover {
+    background-color: rgb(160, 158, 65);
+    border: 1px solid rgb(160, 158, 65);
+}
+
+.margin-bouton-commentaire{
+    margin-left: 5%;
+    margin-right: 25%;
+    background-color: rgb(4, 9, 59);
+    border: 1px solid rgb(4, 9, 59);
+    width: 20%;
+    height: 40px;
+}
+
+.margin-bouton-commentaire:hover {
+    background-color: rgb(58, 59, 104);
+    border: 1px solid rgb(58, 59, 104);
+}
+
+.margin-bouton-commentaire-seul{
+    margin-left: 40%;
+    margin-right: 40%;
+    background-color: rgb(4, 9, 59);
+    border: 1px solid rgb(4, 9, 59);
+    width: 20%;
+    height: 40px;
+}
+
+.margin-bouton-commentaire-seul:hover {
+    background-color: rgb(58, 59, 104);
+    border: 1px solid rgb(58, 59, 104);
 }

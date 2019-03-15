@@ -12,7 +12,4 @@ export class PageDefautComponent implements OnInit {
   ngOnInit() {
   }
 
-  test() {
-    alert('Ok !');
-  }
 }

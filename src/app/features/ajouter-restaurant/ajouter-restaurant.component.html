@@ -1,6 +1,8 @@
-<div class="hauteur-minimum">
+<app-menu-gauche></app-menu-gauche>
 
-    <app-menu-gauche></app-menu-gauche>
+<app-tabset></app-tabset>
+
+<div class="hauteur-minimum principal">
 
     <div class="espace-haut"></div>
 
@@ -25,7 +27,7 @@
             
             <div class="margin-champs">
                 <label class="titre-formulaire" for="dateVisite">Date de la visite : </label><span class="etoile-rouge">*</span>
-                <input ngControl="ajoutRestaurantForm.dateVisite" class="largeur-input" type="text" 
+                <input ngControl="ajoutRestaurantForm.dateVisite" class="largeur-input" type="date" 
                 placeholder="00/00/0000" minlength="10" maxlength="10"
                 name="dateVisite" id="dateVisite" [(ngModel)]="ajoutRestaurantForm.dateVisite" required/>
                 <span [hidden]="ajoutRestaurantForm.dateVisite" class="text-danger">Entrez une date !</span>
@@ -35,13 +37,13 @@
                 <label class="titre-formulaire" for="note">Note (optionnel) : </label>
                 <input ngControl="ajoutRestaurantForm.note" class="largeur-input" type="number" 
                 placeholder="De 1 à 5" minlength="1" maxlength="1" pattern="[1-5]"
-                name="note" id="note" [(ngModel)]="ajoutRestaurantForm.note"/>
+                min="1" max="5" name="note" id="note" [(ngModel)]="ajoutRestaurantForm.note"/>
             </div>
 
-            <input class="margin-bouton bouton-envoyer-nouveau-restaurant" type="submit"  
-                name="bouton-envoyer" id="bouton-envoyer"
+            <input class="btn btn-primary margin-bouton-envoyer" type="submit"  
+                name="bouton-envoyer" id="bouton-envoyer" ngbButton
                 [disabled]="!ajoutRestaurantForm.form.valid" value="Envoyer le restaurant"
-                (click)="cacherMessageConfirmationEnvoiRestaurant(); ajouterRestaurant()"
+                (click)="cacherMessageConfirmationEnvoiRestaurant();"
             />
 
         </form>
@@ -51,7 +53,15 @@
 
     <span class={{cacherMessageConfirmationEnvoi}}>
         <img class="centrer-image" src="assets/images/ajouter.jpg" />
-        <div class="visuel-message-confirmation">Ce restaurant vient d'être envoyé dans la liste.</div>
+        <ngb-alert class="visuel-message-confirmation" type="success" [dismissible]="false">
+            Ce restaurant vient d'être envoyé dans la liste.
+        </ngb-alert>
+        <a routerLink="/liste">
+            <input class="btn btn-primary margin-bouton-liste" type="button"  
+                name="bouton-retour-liste" id="bouton-retour-liste"
+                value="Retourne à la liste"
+            />
+        </a>
     </span>
 
     <div class="espace-haut"></div>

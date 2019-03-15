@@ -3,10 +3,11 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
+import { restaurants } from 'src/app/core/liste-restaurants';
 import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
 import { RestaurantDetailComponent } from '../restaurant-detail/restaurant-detail.component';
 import { RestaurantAdd } from 'src/app/core/actions/restaurant.action';
+import { IRestaurant } from 'src/app/core/restaurant';
 
 @Injectable()
 
@@ -17,11 +18,11 @@ import { RestaurantAdd } from 'src/app/core/actions/restaurant.action';
 })
 export class AjouterRestaurantComponent implements OnInit {
 
-  restaurantAAjouter = {};
+  restaurantAAjouter: IRestaurant;
   restaurant$: Observable<object>;
-  
-  public cacherformulaireNouveauRestaurant: string;
-  public cacherMessageConfirmationEnvoi: string;
+
+  cacherformulaireNouveauRestaurant: string;
+  cacherMessageConfirmationEnvoi: string;
 
   constructor(
     public listeRestaurantsComponent: ListeRestaurantsComponent,
@@ -29,7 +30,7 @@ export class AjouterRestaurantComponent implements OnInit {
     private store: Store<{restaurant: object}>
   ) {
     this.restaurant$ = store.pipe(select('restaurant'));
-   }
+  }
 
   cacherMessageConfirmationEnvoiRestaurant() {
     this.cacherformulaireNouveauRestaurant = 'cacher-formulaire-envoi-nouveau-restaurant';
@@ -43,14 +44,18 @@ export class AjouterRestaurantComponent implements OnInit {
     const note = value.note;
     const restaurantId = restaurants.length;
     // tslint:disable-next-line:max-line-length
-    // restaurants.push({'check': false, 'nom': nom, 'adresse': adresse, 'dateDerniereVisite': dateDerniereVisite, 'note': note, 'nombreVisite': null, 'nombreCommentaire': null, 'commentaire': null, 'restaurantId': restaurantId});
-    this.restaurantAAjouter = {'check': false, 'nom': nom, 'adresse': adresse, 'dateDerniereVisite': dateDerniereVisite, 'note': note, 'nombreVisite': null, 'nombreCommentaire': null, 'commentaire': null, 'restaurantId': restaurantId};
-    console.log('RAA : ', this.restaurantAAjouter);
-    return this.restaurantAAjouter;
-  }
-
-  ajouterRestaurant() {
-    this.store.dispatch(new RestaurantAdd());
+    this.restaurantAAjouter = {
+      check: false,
+      nom: nom,
+      adresse: adresse,
+      dateDerniereVisite: dateDerniereVisite,
+      note: note,
+      nombreVisite: 1,
+      nombreCommentaire: null,
+      commentaire: null,
+      restaurantId: restaurantId
+    };
+    this.store.dispatch(new RestaurantAdd(this.restaurantAAjouter));
   }
 
   ngOnInit() {

@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+import { restaurants } from 'src/app/core/liste-restaurants';
+import { RestaurantDelete, RestaurantRead } from 'src/app/core/actions/restaurant.action';
+import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
 
 @Component({
   selector: 'app-supprimer-restaurant',
@@ -9,12 +15,13 @@ import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurant
 })
 export class SupprimerRestaurantComponent implements OnInit {
 
-  page = 1;
-  pageSize = 5;
-  restaurants = restaurants;
+  closeResult: string;
 
-  indexPage: number[] = [];
-  finBoucle = 0;
+  page = 1;
+  pageSize = 8;
+  restaurants = restaurants;
+  restaurant$: Observable<object>;
+
   id: number = null;
   aSupprimer: number[] = [];
 
@@ -22,15 +29,45 @@ export class SupprimerRestaurantComponent implements OnInit {
   cacherMessageConfirmationSuppression = 'cacher-message-confirmation-suppression';
   cacherPagination = '';
   cacherTableauRestaurantsVisibles = '';
-  restaurantsVisibles = [];
 
-  constructor() { }
+  constructor(
+    public listeRestaurantsComponent: ListeRestaurantsComponent,
+    private modalService: NgbModal,
+    private store: Store<{restaurant: object}>
+  ) {
+    this.restaurant$ = store.pipe(select('restaurant'));
+  }
 
-  ngOnInit() { }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  montrerListe() {
+    this.store.dispatch(new RestaurantRead());
+  }
+
+  ngOnInit() {
+    this.montrerListe();
+  }
 
   cacherMessageConfirmationSuppressionRestaurant() {
     this.cacherTableauRestaurantsVisibles = 'cacher-tableau-restaurants';
     this.cacherMessageConfirmationSuppression = '';
+    this.cacherPagination = 'cacher-pagination';
   }
 
   cocher(event, check) {
@@ -44,18 +81,19 @@ export class SupprimerRestaurantComponent implements OnInit {
       this.id = null;
       this.supprimerSelection = 'cacher-bouton-supprimer';
     }
-    console.log('A supp : ', this.aSupprimer);
   }
 
   supprimerRestaurant() {
-    if (window.confirm('Etes vous sur de vouloir supprimer ce(s) restaurant(s) ?')) {
       for (let i = 0; i < this.aSupprimer.length; i++) {
-        this.restaurants.splice(this.aSupprimer[i], 1);
+          this.restaurants.splice(this.aSupprimer[i], 1);
       }
-    }
+      for (let j = 0; j < this.restaurants.length; j++) {
+        this.restaurants[j].restaurantId = j;
+      }
+    this.store.dispatch(new RestaurantDelete(this.restaurants));
     this.supprimerSelection = 'cacher-bouton-supprimer';
-    this.cacherPagination = 'cacher-pagination';
     this.cacherMessageConfirmationSuppressionRestaurant();
+    this.aSupprimer = [];
   }
 
 }

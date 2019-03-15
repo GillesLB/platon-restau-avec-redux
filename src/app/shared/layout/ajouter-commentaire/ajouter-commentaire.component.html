@@ -19,7 +19,7 @@
       <span [hidden]="commentaireForm.texte " class="text-danger largeur">Entrez un texte !</span>
     </div>
 
-    <input class="margin-bouton bouton-envoyer-commentaire" type="submit"  
+    <input class="btn btn-primary margin-bouton-envoyer" type="submit"  
           name="bouton-envoyer" id="bouton-envoyer"
           [disabled]="!commentaireForm.form.valid" value="Envoyer le commentaire"
           (click)="cacherMessageConfirmationEnvoiCommentaire()"
