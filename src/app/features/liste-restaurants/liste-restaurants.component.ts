@@ -15,7 +15,7 @@ import { RestaurantRead } from 'src/app/core/actions/restaurant.action';
 export class ListeRestaurantsComponent implements OnInit {
 
   page = 1;
-  pageSize = 8;
+  pageSize = 7;
 
   restaurant$: Observable<object>;
 

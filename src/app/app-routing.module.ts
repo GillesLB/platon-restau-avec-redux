@@ -10,10 +10,7 @@ import { SupprimerRestaurantComponent } from './features/supprimer-restaurant/su
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '',
-    redirectTo: '/',
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: '/', pathMatch: 'full'},
   { path: '', component: PageAccueilComponent },
   { path: 'liste', component: ListeRestaurantsComponent },
   { path: 'liste/:restaurantId', component: RestaurantDetailComponent },

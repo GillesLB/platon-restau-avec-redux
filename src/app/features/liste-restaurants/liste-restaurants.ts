@@ -1,4 +1,4 @@
-import { Restaurant } from "../../core/restaurant";
+import { Restaurant } from '../../core/restaurant';
 
 export const restaurants: Restaurant[] = [
     // tslint:disable-next-line:max-line-length

@@ -7,20 +7,6 @@
     font-size: 28px;
 }
 
-.centrer-texte-horizontal {
-    text-align: center;
-    vertical-align: middle;
-}
-
-.centrer-texte-vertical {
-    margin: auto;
-    line-height: 80px;
-}
-
 .hauteur {
     height: 80px;
-}
-
-.principal{
-    margin-left: 210px;
 }

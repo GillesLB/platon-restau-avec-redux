@@ -40,7 +40,7 @@ export class AjouterRestaurantComponent implements OnInit {
   onSubmit(value) {
     const nom = value.nom;
     const adresse = value.adresse;
-    const dateDerniereVisite = value.dateVisite;
+    const dateDerniereVisite = value.dateDerniereVisite;
     const note = value.note;
     const restaurantId = restaurants.length;
     // tslint:disable-next-line:max-line-length

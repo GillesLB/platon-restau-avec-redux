@@ -1,31 +1,48 @@
-<ngb-tabset class="fond-tabset">
+<nav>
 
-  <ngb-tab class="fond-tabset">
-    <ng-template class="fond-tabset" ngbTabTitle>
-        <a routerLink="/" routerLinkActive class="fond-tabset">Accueil</a>
-    </ng-template>
-    <ng-template class="fond-tabset" ngbTabContent></ng-template>
-  </ngb-tab>
+  <ul class="nav nav-pills bg-light">
 
-  <ngb-tab>
-    <ng-template ngbTabTitle>
-        <a routerLink="/liste" routerLinkActive>Liste des restaurants</a>
-    </ng-template>
-    <ng-template ngbTabContent></ng-template>
-  </ngb-tab>
+    <li class="nav-item ml-3">
+      <a
+        class="nav-link"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+      >
+        Accueil
+      </a>
+    </li>
 
-  <ngb-tab>
-    <ng-template ngbTabTitle>
-        <a routerLink="/ajouter-restaurant" >Ajouter un restaurant</a>
-    </ng-template>
-    <ng-template ngbTabContent></ng-template>
-  </ngb-tab>
+    <li class="nav-item ml-3">
+      <a
+        class="nav-link"
+        routerLink="/liste"
+        routerLinkActive="active"
+      >
+        Liste des restaurants
+      </a>
+    </li>
 
-  <ngb-tab>
-    <ng-template ngbTabTitle>
-        <a routerLink="/supprimer-restaurant" >Supprimer un restaurant</a>
-    </ng-template>
-    <ng-template ngbTabContent></ng-template>
-  </ngb-tab>
+    <li class="nav-item ml-3">
+      <a
+        class="nav-link"
+        routerLink="/ajouter-restaurant"
+        routerLinkActive="active"
+      >
+        Ajouter un restaurant
+      </a>
+    </li>
 
-</ngb-tabset>
+    <li class="nav-item ml-3">
+        <a
+          class="nav-link"
+          routerLink="/supprimer-restaurant"
+          routerLinkActive="active"
+        >
+          Supprimer un restaurant
+        </a>
+    </li>
+
+  </ul>
+
+</nav>
