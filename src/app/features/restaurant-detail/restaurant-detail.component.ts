@@ -4,8 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
-import { ListeRestaurantsComponent } from 'src/app/features/liste-restaurants/liste-restaurants.component';
-
 @Component({
   selector: 'app-restaurant-detail',
   templateUrl: './restaurant-detail.component.html',
@@ -23,7 +21,6 @@ export class RestaurantDetailComponent implements OnInit {
   restaurant$: Observable<object>;
 
   constructor(
-    public restaurantsLRC: ListeRestaurantsComponent,
     private route: ActivatedRoute,
     private store: Store<{restaurant: object}>
   ) {

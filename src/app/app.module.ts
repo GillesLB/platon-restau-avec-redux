@@ -28,6 +28,7 @@ import { environment } from 'src/environments/environment.prod';
 import { MomentModule } from 'ngx-moment';
 import { TabsetComponent } from './shared/layout/tabset/tabset.component';
 import { CarteRestaurantsComponent } from './features/carte-restaurants/carte-restaurants.component';
+import { RestaurantsService } from 'src/app/features/services/restaurants.service';
 
 @NgModule({
   declarations: [
@@ -70,8 +71,8 @@ import { CarteRestaurantsComponent } from './features/carte-restaurants/carte-re
     })
   ],
   providers: [
-    ListeRestaurantsComponent,
-    RestaurantDetailComponent
+    RestaurantDetailComponent,
+    RestaurantsService,
   ],
   bootstrap: [AppComponent]
 })

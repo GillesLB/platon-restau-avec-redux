@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
 
-import * as firebase from 'firebase';
 import { RestaurantRead } from 'src/app/core/actions/restaurant.action';
+import { Restaurant } from 'src/app/core/restaurant';
+import { RestaurantsService } from 'src/app/features/services/restaurants.service';
 
 
 @Component({
@@ -12,30 +13,43 @@ import { RestaurantRead } from 'src/app/core/actions/restaurant.action';
   templateUrl: './liste-restaurants.component.html',
   styleUrls: ['./liste-restaurants.component.css']
 })
-export class ListeRestaurantsComponent implements OnInit {
+export class ListeRestaurantsComponent implements OnInit, OnDestroy {
 
   page = 1;
   pageSize = 7;
-bla;
+
+  listeRestaurants: Restaurant[];
+
+  restaurantsSubscription: Subscription;
+
   restaurant$: Observable<object>;
 
   constructor(
+    private restaurantsService: RestaurantsService,
     private store: Store<{restaurant: object}>
   ) {
-    this.restaurant$ = store.pipe(select('restaurant'));
-    this.restaurant$.subscribe((x) => this.bla = x);
+    // this.restaurant$ = store.pipe(select('restaurant'));
   }
 
-  savePosts() {
-    firebase.database().ref('/posts').set(this.bla.data);
+  ngOnInit() {
+    this.restaurantsSubscription = this.restaurantsService.restaurantsSubject.subscribe(
+      (restaurants: Restaurant[]) => {
+        this.listeRestaurants = restaurants;
+      });
+    this.restaurantsService.emitRestaurants();
+  }
+
+  getRestaurants() {
+    this.restaurantsService.getRestaurants();
+    console.log('t b 2 : ', this.listeRestaurants);
   }
 
   montrerListe() {
     this.store.dispatch(new RestaurantRead());
   }
 
-  ngOnInit() {
-    this.montrerListe();
+  ngOnDestroy() {
+    this.restaurantsSubscription.unsubscribe();
   }
 
 }

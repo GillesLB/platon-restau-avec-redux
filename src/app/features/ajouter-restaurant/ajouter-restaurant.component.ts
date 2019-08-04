@@ -4,8 +4,6 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { restaurants } from 'src/app/core/liste-restaurants';
-import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
-import { RestaurantDetailComponent } from '../restaurant-detail/restaurant-detail.component';
 import { RestaurantAdd } from 'src/app/core/actions/restaurant.action';
 import { IRestaurant } from 'src/app/core/restaurant';
 
@@ -25,8 +23,6 @@ export class AjouterRestaurantComponent implements OnInit {
   cacherMessageConfirmationEnvoi: string;
 
   constructor(
-    public listeRestaurantsComponent: ListeRestaurantsComponent,
-    public restaurantDetailComponent: RestaurantDetailComponent,
     private store: Store<{restaurant: object}>
   ) {
     this.restaurant$ = store.pipe(select('restaurant'));

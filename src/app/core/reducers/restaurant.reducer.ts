@@ -14,7 +14,8 @@ export function restaurantReducer(state = INITIAL_STATE, action: ActionsRestaura
                 ...state,
                 // modification de la donnée data du state
                 // et ajout de la donnée (ici, restaurantAAjouter) à la fin du tableau
-                data: [...state.data, restaurantAAjouter]
+                data: [...state, restaurantAAjouter]
+                // data: [...state.data, restaurantAAjouter]
             };
         case ACTIONS.CRUD.GET_RESTAURANT_DELETE:
             const restaurantASupprimer = action.payload;

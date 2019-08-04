@@ -5,6 +5,7 @@ import * as L from 'leaflet';
 
 import { Restaurant } from 'src/app/core/restaurant';
 import { restaurants } from 'src/app/features/liste-restaurants/liste-restaurants';
+import { RestaurantsService } from 'src/app/features/services/restaurants.service';
 
 @Component({
   selector: 'app-carte-restaurants',
@@ -16,12 +17,14 @@ export class CarteRestaurantsComponent implements OnInit {
   listeRestaurants: Restaurant[] = [];
   nombreRestaurants: number;
 
-  constructor() {
-    this.listeRestaurants = restaurants;
+  constructor(
+    private restaurantsService: RestaurantsService,
+  ) {
+    // this.listeRestaurants = this.restaurantsService.getRestaurants();
   }
 
   ngOnInit() {
-    this.nombreRestaurants = this.listeRestaurants.length;
+    this.nombreRestaurants = this.listeRestaurants.length - 1;
 
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     const myplatonrestau = L.map('platonrestau').setView([47.207527, -1.546276], 16);

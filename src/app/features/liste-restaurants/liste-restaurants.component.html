@@ -20,7 +20,7 @@
       </thead>
 
       <tbody>
-        <ng-container *ngFor="let restaurant of (restaurant$ | async).data | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+        <ng-container *ngFor="let restaurant of listeRestaurants | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
           <tr>
             <td scope="col" class="font-weight-bold">{{restaurant.nom}}</td>
             <td scope="col">{{restaurant.adresse}}</td> 
@@ -32,13 +32,15 @@
             <td scope="col" *ngIf="!restaurant.nombreCommentaire" class="text-center">-</td>
             <td scope="col" class="text-center">
               <a [routerLink]="['/liste', restaurant.restaurantId]">
-                <i class="fas fa-fan"></i>
                 <button
                   class="btn btn-secondary btn-sm"
                   type="button"  
                   name="bouton-detail"
                   id="bouton-detail"
-                >Détail<i class="fas fa-fan"></i></button>
+                >
+                  <i class="fas fa-id-card"></i>
+                  Détail
+                </button>
               </a>
             </td>
           </tr>
@@ -53,7 +55,7 @@
     class="d-flex justify-content-center"
     [(page)]="page"
     [pageSize]="pageSize"
-    [collectionSize]="(restaurant$ | async).data.length"
+    [collectionSize]="listeRestaurants.length"
     [rotate]="true"
     [boundaryLinks]="true"
   >

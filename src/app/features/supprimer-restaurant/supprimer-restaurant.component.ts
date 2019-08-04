@@ -6,7 +6,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { restaurants } from 'src/app/core/liste-restaurants';
 import { RestaurantDelete, RestaurantRead } from 'src/app/core/actions/restaurant.action';
-import { ListeRestaurantsComponent } from '../liste-restaurants/liste-restaurants.component';
 
 @Component({
   selector: 'app-supprimer-restaurant',
@@ -31,7 +30,6 @@ export class SupprimerRestaurantComponent implements OnInit {
   cacherTableauRestaurantsVisibles = '';
 
   constructor(
-    public listeRestaurantsComponent: ListeRestaurantsComponent,
     private modalService: NgbModal,
     private store: Store<{restaurant: object}>
   ) {
