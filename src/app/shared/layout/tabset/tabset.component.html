@@ -5,10 +5,11 @@
     <li class="nav-item ml-3">
       <a
         class="nav-link"
-        routerLink="/"
+        routerLink="accueil"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}"
       >
+        <i class="fas fa-home"></i>
         Accueil
       </a>
     </li>
@@ -16,9 +17,10 @@
     <li class="nav-item ml-3">
       <a
         class="nav-link"
-        routerLink="/liste"
+        routerLink="liste"
         routerLinkActive="active"
       >
+        <i class="fas fa-list-alt"></i>
         Liste des restaurants
       </a>
     </li>
@@ -26,9 +28,10 @@
     <li class="nav-item ml-3">
       <a
         class="nav-link"
-        routerLink="/ajouter-restaurant"
+        routerLink="ajouter-restaurant"
         routerLinkActive="active"
       >
+        <i class="fas fa-plus-square"></i>
         Ajouter un restaurant
       </a>
     </li>
@@ -36,11 +39,23 @@
     <li class="nav-item ml-3">
         <a
           class="nav-link"
-          routerLink="/supprimer-restaurant"
+          routerLink="supprimer-restaurant"
           routerLinkActive="active"
         >
+          <i class="fas fa-minus-square"></i>
           Supprimer un restaurant
         </a>
+    </li>
+
+    <li class="nav-item ml-3">
+      <a
+        class="nav-link"
+        routerLink="carte-restaurants"
+        routerLinkActive="active"
+      >
+        <i class="far fa-map"></i>
+        Carte des restaurants
+      </a>
     </li>
 
   </ul>

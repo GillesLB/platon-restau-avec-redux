@@ -43,7 +43,9 @@ export class AjouterRestaurantComponent implements OnInit {
     const dateDerniereVisite = value.dateDerniereVisite;
     const note = value.note;
     const restaurantId = restaurants.length;
-    // tslint:disable-next-line:max-line-length
+    const latitude = value.latitude ? value.latitude : null;
+    const longitude = value.longitude ? value.longitude : null;
+
     this.restaurantAAjouter = {
       check: false,
       nom: nom,
@@ -52,6 +54,8 @@ export class AjouterRestaurantComponent implements OnInit {
       note: note,
       nombreVisite: 1,
       nombreCommentaire: null,
+      latitude: latitude,
+      longitude: longitude,
       commentaire: null,
       restaurantId: restaurantId
     };

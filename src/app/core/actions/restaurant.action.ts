@@ -7,7 +7,6 @@ export class RestaurantAdd implements Action {
     // Type (nom unique écouté par le reducer)
     readonly type = ACTIONS.CRUD.GET_RESTAURANT_ADD;
     // Data
-    // tslint:disable-next-line:max-line-length
     constructor(public payload: IRestaurant) {}
 }
 

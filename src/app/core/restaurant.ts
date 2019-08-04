@@ -7,6 +7,8 @@ export interface IRestaurant {
     note: number;
     nombreVisite: number;
     nombreCommentaire: number;
+    latitude: number;
+    longitude: number;
     commentaire: any[];
     restaurantId: number;
 }
@@ -20,6 +22,8 @@ export class Restaurant implements IRestaurant {
         public note: number,
         public nombreVisite: number,
         public nombreCommentaire: number,
+        public latitude: number,
+        public longitude: number,
         public commentaire: any[],
         public restaurantId: number
     ) {}

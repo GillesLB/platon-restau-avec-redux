@@ -1,5 +1,3 @@
-<app-tabset></app-tabset>
-
 <div>
 
   <div>
@@ -34,13 +32,13 @@
             <td scope="col" *ngIf="!restaurant.nombreCommentaire" class="text-center">-</td>
             <td scope="col" class="text-center">
               <a [routerLink]="['/liste', restaurant.restaurantId]">
-                <input
+                <i class="fas fa-fan"></i>
+                <button
                   class="btn btn-secondary btn-sm"
                   type="button"  
                   name="bouton-detail"
                   id="bouton-detail"
-                  value="Détail >"
-                />
+                >Détail<i class="fas fa-fan"></i></button>
               </a>
             </td>
           </tr>
@@ -50,6 +48,7 @@
     </table>
   </div>
 
+  <!-- pagination de Angular bootstrap -->
   <ngb-pagination
     class="d-flex justify-content-center"
     [(page)]="page"

@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { routes } from 'src/app/core/routes';
 import { AppComponent } from 'src/app/app.component';
@@ -20,12 +22,12 @@ import { AjouterRestaurantComponent } from './features/ajouter-restaurant/ajoute
 import { SupprimerRestaurantComponent } from './features/supprimer-restaurant/supprimer-restaurant.component';
 import { AjouterNoteComponent } from './shared/layout/ajouter-note/ajouter-note.component';
 import { AjouterCommentaireComponent } from './shared/layout/ajouter-commentaire/ajouter-commentaire.component';
-import { PaginationService } from './features/pagination.service';
 import { PageAccueilComponent } from './features/page-accueil/page-accueil.component';
 import { restaurantReducer } from './core/reducers/restaurant.reducer';
 import { environment } from 'src/environments/environment.prod';
 import { MomentModule } from 'ngx-moment';
 import { TabsetComponent } from './shared/layout/tabset/tabset.component';
+import { CarteRestaurantsComponent } from './features/carte-restaurants/carte-restaurants.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { TabsetComponent } from './shared/layout/tabset/tabset.component';
     AjouterCommentaireComponent,
     PageAccueilComponent,
     TabsetComponent,
+    CarteRestaurantsComponent,
   ],
   exports: [
     RouterModule
@@ -48,6 +51,7 @@ import { TabsetComponent } from './shared/layout/tabset/tabset.component';
   imports: [
     NgbModule,
     BrowserModule,
+    NgxPaginationModule,
     RouterModule.forRoot(routes),
     StoreModule.forRoot({restaurant: restaurantReducer}),
     StoreDevtoolsModule.instrument({
@@ -57,6 +61,7 @@ import { TabsetComponent } from './shared/layout/tabset/tabset.component';
     // tslint:disable-next-line: deprecation
     HttpModule,
     HttpClientModule,
+    AngularFontAwesomeModule,
     FormsModule,
     MomentModule.forRoot({
       relativeTimeThresholdOptions: {
@@ -66,7 +71,6 @@ import { TabsetComponent } from './shared/layout/tabset/tabset.component';
   ],
   providers: [
     ListeRestaurantsComponent,
-    PaginationService,
     RestaurantDetailComponent
   ],
   bootstrap: [AppComponent]
