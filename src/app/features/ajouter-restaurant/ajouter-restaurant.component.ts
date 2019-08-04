@@ -37,7 +37,6 @@ export class AjouterRestaurantComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   initForm() {
@@ -48,6 +47,7 @@ export class AjouterRestaurantComponent implements OnInit {
       latitude: new FormControl('', [Validators.required, Validators.pattern(this.NOMBRE_REGEX)]),
       longitude: new FormControl('', [Validators.required, Validators.pattern(this.NOMBRE_REGEX)]),
     });
+    console.log('AjouterForm : ', this.ajouterRestaurantForm.value);
   }
 
   envoyerFormulaire() {
