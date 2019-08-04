@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
@@ -64,6 +64,7 @@ import { RestaurantsService } from 'src/app/features/services/restaurants.servic
     HttpClientModule,
     AngularFontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule,
     MomentModule.forRoot({
       relativeTimeThresholdOptions: {
         'm': 59

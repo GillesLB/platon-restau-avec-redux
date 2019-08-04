@@ -1,16 +1,3 @@
 .titre-formulaire {
     font-size: 20px;
 }
-
-.fond {
-    background-color: rgb(224, 214, 182);
-}
-
-
-.cacher-formulaire-envoi-nouveau-restaurant {
-    display: none;
-}
-
-.cacher-message-confirmation-envoi {
-    display: none;
-}
