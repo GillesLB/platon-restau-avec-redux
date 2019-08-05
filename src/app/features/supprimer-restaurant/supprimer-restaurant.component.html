@@ -1,103 +1,105 @@
-<div class="hauteur-minimum principal">
-    
-    <div class="espace-haut"></div>
-    
 <div>
 
-    <div class="titre {{cacherTableauRestaurantsVisibles}}">Sélectionnez les restaurants à supprimer :</div>
+    <div class="font-weight-bold text-center titre my-3">
+        Sélectionnez les restaurants à supprimer :
+    </div>
     
-    <table class="largeur-tableau {{cacherTableauRestaurantsVisibles}}">
-    
-        <thead class="centrer-texte">
-            <tr>
-                <th class="a-supprimer">X</th>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>Visité le</th>
-                <th>Note</th>
-                <th>Nb visites</th>
-                <th>Comm.</th>
-            </tr>
-        </thead>
-    
-        <tbody>
-            <ng-container *ngFor="let restaurant of (restaurant$ | async).data | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
-                <tr [ngClass]="{'ligne-a-supprimer': restaurant.check === true}">
-                    <td>
-                        <input type="checkbox" id={{restaurant.nom}} name={{restaurant.nom}}
-                        value={{restaurant.restaurantId}} [(ngModel)]=restaurant.check
-                        (change)="cocher($event, restaurant.check)" />
-                    </td>
-                    <td class="texte-en-gras largeur-colonne-nom">{{restaurant.nom}}</td>
-                    <td class="largeur-colonne-adresse">{{restaurant.adresse}}</td> 
-                    <td class="centrer-texte">{{restaurant.dateDerniereVisite}}</td>
-                    <td *ngIf="restaurant.note" class="centrer-texte largeur-colonne-note">{{restaurant.note}} / 5</td>
-                    <td *ngIf="!restaurant.note" class="centrer-texte largeur-colonne-note">-</td>
-                    <td class="centrer-texte">{{restaurant.nombreVisite}}</td>
-                    <td *ngIf="restaurant.nombreCommentaire" class="centrer-texte largeur-colonne-note">{{restaurant.nombreCommentaire}}</td>
-                    <td *ngIf="!restaurant.nombreCommentaire" class="centrer-texte largeur-colonne-note">-</td>
-                </tr>
-            </ng-container>
-        </tbody>
-    
-    </table>
-    
-    <div class="espace-haut"></div>
-
-    <span class={{cacherPagination}}>
-        <ngb-pagination
-            class="d-flex justify-content-center"
-            [(page)]="page"
-            [pageSize]="pageSize"
-            [collectionSize]="restaurants.length"
-            [rotate]="true"
-            [boundaryLinks]="true"
-        >
-        </ngb-pagination>
-    </span>
+    <div class="row justify-content-center cotes">
         
-    <div class="espace-haut"></div>
+        <table class="table table-striped">
+        
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="col-1 text-center">
+                        <i class="fas fa-trash-alt"></i>
+                    </th>
+                    <th scope="col" class="col-3">Nom</th>
+                    <th scope="col" class="col-3">Adresse</th>
+                    <th scope="col" class="col-2 text-center">Visité le</th>
+                    <th scope="col" class="col-1 text-center">Note</th>
+                    <th scope="col" class="col-1 text-center">Nb visites</th>
+                    <th scope="col" class="col-1 text-center">Comm.</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <ng-container *ngFor="let restaurant of listeRestaurants | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
+                    <tr [ngClass]="{'bg-danger text-white': restaurant.check === true}">
+                        <td class="text-center">
+                            <input
+                                type="checkbox"
+                                id={{restaurant.nom}}
+                                name={{restaurant.nom}}
+                                value={{restaurant.restaurantId}}
+                                [(ngModel)]=restaurant.check
+                                (change)="cocher($event, restaurant.check)"
+                            />
+                        </td>
+                        <td scope="col" class="font-weight-bold">{{restaurant.nom}}</td>
+                        <td scope="col">{{restaurant.adresse}}</td> 
+                        <td scope="col" class="text-center">{{restaurant.dateDerniereVisite}}</td>
+                        <td scope="col" *ngIf="restaurant.note" class="text-center">{{restaurant.note}} / 5</td>
+                        <td scope="col" *ngIf="!restaurant.note" class="text-center">-</td>
+                        <td scope="col" class="text-center">{{restaurant.nombreVisite}}</td>
+                        <td scope="col" *ngIf="restaurant.nombreCommentaire" class="text-center">{{restaurant.nombreCommentaire}}</td>
+                        <td scope="col" *ngIf="!restaurant.nombreCommentaire" class="text-center">-</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        
+        </table>
 
-    <span class="margin-bouton">
-        <input class="btn btn-primary margin-bouton-envoyer {{supprimerSelection}}" type="submit"  
-                name="bouton-supprimer-restaurant" id="bouton-supprimer-restaurant"
-                value="Supprimer la sélection" (click)="open(content)"
-        />
-    </span>
+        <!-- pagination de Angular bootstrap -->
+        <div *ngIf="listeRestaurants.length > 7">
+            <ngb-pagination
+                class="d-flex justify-content-center"
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="listeRestaurants.length"
+                [rotate]="true"
+                [boundaryLinks]="true"
+            >
+            </ngb-pagination>
+        </div>
+    
+    </div>
 
-    <div class="espace-haut"></div>
+</div>
+
+<div>
+
+    <div *ngIf="afficherBoutonSupprimer" class="cote-gauche">
+        <button
+            class="btn btn-danger" 
+            (click)="open(content)"
+        >
+            Supprimer la sélection
+        </button>
+    </div>
 
     <!-- MODAL -->
     <ng-template #content let-modal>
-        <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Validation</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Etes-vous vraiment sur de vouloir supprimer ce(s) restaurant(s) ?
-      </div>
-      <div class="modal-footer">
-        <input type="button" class="btn btn-outline-dark" value="Annuler" (click)="modal.dismiss('Cross click')"/>
-        <button type="button" class="btn btn-outline-success" (click)="supprimerRestaurant(); modal.dismiss('Cross click')">Ok</button>
-      </div>
+
+        <div class="modal-header bg-light">
+            <h4 class="modal-title" id="modal-basic-title">Validation</h4>
+            <button
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+            >
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body font-weight-bold">
+            Etes-vous sûr de vouloir supprimer ce(s) restaurant(s) ?
+        </div>
+
+        <div class="modal-footer">
+            <input type="button" class="btn btn-outline-dark" value="Annuler" (click)="modal.dismiss('Cross click')"/>
+            <button type="button" class="btn btn-outline-success" (click)="supprimerRestaurant(); modal.dismiss('Cross click')">Ok</button>
+        </div>
+
     </ng-template>
-    
-    <span class={{cacherMessageConfirmationSuppression}}>
-        <img class="centrer-image" src="assets/images/supprimer.jpg" />
-        <ngb-alert class="visuel-message-confirmation" type="success" [dismissible]="false">
-          La suppression de ce(s) restaurant(s) est confirmée.
-        </ngb-alert>
-        <a routerLink="/liste">
-            <input class="btn btn-primary margin-bouton-liste" type="button"  
-                name="bouton-retour-liste" id="bouton-retour-liste"
-                value="Retourne à la liste"
-            />
-        </a>
-    </span>
-        
-    <div class="espace-haut"></div>
 
 </div>
-    

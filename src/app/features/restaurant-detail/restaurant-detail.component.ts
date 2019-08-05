@@ -11,6 +11,8 @@ import { Store, select } from '@ngrx/store';
 })
 export class RestaurantDetailComponent implements OnInit {
 
+  detailRestaurant = true;
+
   public cacherFiche: string;
   public formulaireCommentaire: string;
   public formulaireNote: string;
@@ -24,7 +26,7 @@ export class RestaurantDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private store: Store<{restaurant: object}>
   ) {
-    this.restaurant$ = store.pipe(select('restaurant'));
+    // this.restaurant$ = store.pipe(select('restaurant'));
   }
 
   ngOnInit() {

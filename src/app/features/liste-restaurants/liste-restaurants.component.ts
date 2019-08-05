@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { RestaurantRead } from 'src/app/core/actions/restaurant.action';
@@ -32,11 +32,12 @@ export class ListeRestaurantsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.restaurantsSubscription = this.restaurantsService.restaurantsSubject.subscribe(
-      (restaurants: Restaurant[]) => {
-        this.listeRestaurants = restaurants;
-      });
-    this.restaurantsService.emitRestaurants();
+    // this.restaurantsSubscription = this.restaurantsService.restaurantsSubject.subscribe(
+    //   (restaurants: Restaurant[]) => {
+    //     this.listeRestaurants = restaurants;
+    //   });
+    // this.restaurantsService.emitRestaurants();
+    this.listeRestaurants = this.restaurantsService.listeRestaurants;
   }
 
   getRestaurants() {
@@ -45,11 +46,11 @@ export class ListeRestaurantsComponent implements OnInit, OnDestroy {
   }
 
   montrerListe() {
-    this.store.dispatch(new RestaurantRead());
+    // this.store.dispatch(new RestaurantRead());
   }
 
   ngOnDestroy() {
-    this.restaurantsSubscription.unsubscribe();
+    // this.restaurantsSubscription.unsubscribe();
   }
 
 }

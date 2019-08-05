@@ -1,7 +1,7 @@
 <div class="mt-5 row justify-content-center">
 
     <div class="border border-secondary bg-light" *ngIf="formulaireAjouter">
-        <form [formGroup]="ajouterRestaurantForm" (ngSubmit)="envoyerFormulaire()">
+        <form [formGroup]="ajouterRestaurantForm" (ngSubmit)="envoyerFormulaire(); cacherFormulaire()">
 
             <div class="row justify-content-center titre-formulaire font-weight-bold mt-2 mb-5">Ajoutez un restaurant : </div>
 
@@ -18,7 +18,7 @@
                     type="text" 
                     name="nom"
                     id="nom"
-                    formControName="nom"
+                    formControlName="nom"
                 />
             </div>
 
@@ -35,7 +35,7 @@
                     type="text" 
                     name="adresse"
                     id="adresse"
-                    formControName="adresse"
+                    formControlName="adresse"
                 />
             </div>
 
@@ -54,7 +54,7 @@
                     maxlength="10"
                     name="dateDerniereVisite"
                     id="dateDerniereVisite"
-                    formControName="dateDerniereVisite"
+                    formControlName="dateDerniereVisite"
                 />
             </div>
 
@@ -72,7 +72,7 @@
                         type="number" 
                         name="latitude"
                         id="latitude"
-                        formControName="latitude"
+                        formControlName="latitude"
                     />
                 </div>
 
@@ -89,7 +89,7 @@
                         type="number" 
                         name="longitude"
                         id="longitude"
-                        formControName="longitude"
+                        formControlName="longitude"
                     />
                 </div>
             </div>
@@ -105,6 +105,7 @@
                     class="col-1 form-control"
                     name="note"
                     id="note"
+                    formControlName="note"
                 >
                     <option
                         *ngFor="let note of listeNotes"
@@ -115,14 +116,11 @@
                 </select>
             </div>
 
-            ==> {{ajoutRestaurantForm.value}}
-
             <div class="mb-3 mt-5 row justify-content-center">
                 <button
                     class="btn btn-primary"
                     type="submit"  
-                    [disabled]="ajoutRestaurantForm.invalid"
-                    (click)="cacherFormulaire()"
+                    [disabled]="ajouterRestaurantForm.invalid"
                 >
                     Envoyer le restaurant
                 </button>
@@ -132,10 +130,6 @@
     </div>
 
     <div class="justify-content-center" *ngIf="!formulaireAjouter">
-
-        <div class="text-center">
-            <img src="assets/images/ajouter.jpg" />
-        </div>
 
         <ngb-alert
             class="font-weight-bold my-5"

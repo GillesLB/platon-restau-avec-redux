@@ -51,14 +51,16 @@
   </div>
 
   <!-- pagination de Angular bootstrap -->
-  <ngb-pagination
-    class="d-flex justify-content-center"
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="listeRestaurants.length"
-    [rotate]="true"
-    [boundaryLinks]="true"
-  >
-  </ngb-pagination>
-  
+  <div *ngIf="listeRestaurants.length > 7">
+    <ngb-pagination
+      class="d-flex justify-content-center"
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="listeRestaurants.length"
+      [rotate]="true"
+      [boundaryLinks]="true"
+    >
+    </ngb-pagination>
+  </div>
+
 </div>

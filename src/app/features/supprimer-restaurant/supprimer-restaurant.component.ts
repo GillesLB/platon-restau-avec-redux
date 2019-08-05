@@ -6,6 +6,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { restaurants } from 'src/app/core/liste-restaurants';
 import { RestaurantDelete, RestaurantRead } from 'src/app/core/actions/restaurant.action';
+import { RestaurantsService } from 'src/app/features/services/restaurants.service';
+import { Restaurant } from 'src/app/core/restaurant';
 
 @Component({
   selector: 'app-supprimer-restaurant',
@@ -17,23 +19,25 @@ export class SupprimerRestaurantComponent implements OnInit {
   closeResult: string;
 
   page = 1;
-  pageSize = 8;
+  pageSize = 7;
+
+  afficherBoutonSupprimer = false;
+
+  listeRestaurants: Restaurant[] = [];
+
   restaurants = restaurants;
   restaurant$: Observable<object>;
 
   id: number = null;
   aSupprimer: number[] = [];
 
-  supprimerSelection = 'cacher-bouton-supprimer';
-  cacherMessageConfirmationSuppression = 'cacher-message-confirmation-suppression';
-  cacherPagination = '';
-  cacherTableauRestaurantsVisibles = '';
-
   constructor(
     private modalService: NgbModal,
+    private restaurantsService: RestaurantsService,
     private store: Store<{restaurant: object}>
   ) {
-    this.restaurant$ = store.pipe(select('restaurant'));
+    this.listeRestaurants = this.restaurantsService.listeRestaurants;
+    // this.restaurant$ = store.pipe(select('restaurant'));
   }
 
   open(content) {
@@ -55,29 +59,23 @@ export class SupprimerRestaurantComponent implements OnInit {
   }
 
   montrerListe() {
-    this.store.dispatch(new RestaurantRead());
+    // this.store.dispatch(new RestaurantRead());
   }
 
   ngOnInit() {
-    this.montrerListe();
-  }
-
-  cacherMessageConfirmationSuppressionRestaurant() {
-    this.cacherTableauRestaurantsVisibles = 'cacher-tableau-restaurants';
-    this.cacherMessageConfirmationSuppression = '';
-    this.cacherPagination = 'cacher-pagination';
+    // this.montrerListe();
   }
 
   cocher(event, check) {
     if (check === true) {
       this.id = event.target.value;
       this.aSupprimer.push(this.id);
-      this.supprimerSelection = '';
+      this.afficherBoutonSupprimer = true;
     } else {
       const rangASupprimer = this.aSupprimer.indexOf(this.id);
       this.aSupprimer.splice(rangASupprimer, 1);
       this.id = null;
-      this.supprimerSelection = 'cacher-bouton-supprimer';
+      this.afficherBoutonSupprimer = false;
     }
   }
 
@@ -88,9 +86,9 @@ export class SupprimerRestaurantComponent implements OnInit {
       for (let j = 0; j < this.restaurants.length; j++) {
         this.restaurants[j].restaurantId = j;
       }
-    this.store.dispatch(new RestaurantDelete(this.restaurants));
-    this.supprimerSelection = 'cacher-bouton-supprimer';
-    this.cacherMessageConfirmationSuppressionRestaurant();
+    // this.store.dispatch(new RestaurantDelete(this.restaurants));
+    this.restaurantsService.listeRestaurants = this.restaurants;
+    this.afficherBoutonSupprimer = false;
     this.aSupprimer = [];
   }
 
