@@ -1,100 +1,133 @@
 <div class="mt-5 row justify-content-center">
 
-    <div class="border border-secondary bg-light" *ngIf="detailRestaurant">
+  <div class="border border-secondary bg-light col-4" *ngIf="detailRestaurant">
 
-      <div class="row justify-content-center titre-fiche font-weight-bold mt-2 mb-5">Fiche du restaurant</div>
+    <div class="row justify-content-center titre-fiche font-weight-bold mt-2 mb-5">Fiche du restaurant</div>
 
-      <div class="margin-categories">
-        <span class="categories-fiche">Nom de l'établissement : </span>{{(restaurant$ | async).data[id].nom}}
-      </div>
+    <div class="ml-3 mb-2 taille-texte">
+      <span class="font-weight-bold">Nom de l'établissement : </span>{{listeRestaurants[id].nom}}
+    </div>
 
-      <div class="margin-categories">
-        <span class="categories-fiche">Adresse : </span>{{(restaurant$ | async).data[id].adresse}}
-      </div>
+    <div class="ml-3 mb-2 taille-texte">
+      <span class="font-weight-bold">Adresse : </span>{{listeRestaurants[id].adresse}}
+    </div>
 
-      <div class="margin-categories">
-        <span class="categories-fiche">Date de visite : </span>{{(restaurant$ | async).data[id].dateDerniereVisite}}
-      </div>
+    <div class="ml-3 mb-2 taille-texte">
+      <span class="font-weight-bold">Date de visite : </span>{{listeRestaurants[id].dateDerniereVisite}}
+    </div>
 
-      <div class="margin-categories align">
-        <span class="categories-fiche marge-droite">Note :</span>
-        <span *ngIf="!(restaurant$ | async).data[id].note" class="italique"> Pas encore de note ...</span>
-        <span *ngIf="(restaurant$ | async).data[id].note"></span>{{(restaurant$ | async).data[id].note}}
-      </div>
+    <div class="ml-3 mb-2 taille-texte align">
+      <span class="font-weight-bold">Note : </span>
+      <span *ngIf="!listeRestaurants[id].note" class="font-italic"> Pas encore de note ...</span>
+      <span *ngIf="listeRestaurants[id].note"></span>{{listeRestaurants[id].note}}
+    </div>
 
-      <div class="margin-categories">
-        <span class="categories-fiche">Nombre de visite : </span>{{(restaurant$ | async).data[id].nombreVisite}}
-      </div>
+    <div class="ml-3 mb-4 taille-texte">
+      <span class="font-weight-bold">Nombre de visite : </span>{{listeRestaurants[id].nombreVisite}}
+    </div>
 
-      <div class="margin-categories">
-        <div class="align">
-          <span class="categories-fiche marge-droite">Commentaire(s) :</span>
-          <div *ngIf="(restaurant$ | async).data[id].nombreCommentaire === 0" class="italique"> Pas encore de commentaire ...</div>
+    <div class="ml-3 taille-texte">
+
+      <div class="font-weight-bold mb-2">Commentaire(s) :</div>
+
+        <div
+          *ngIf="!listeRestaurants[id].nombreCommentaire"
+          class="font-italic mb-4"
+        >
+          Pas encore de commentaire ...
         </div>
-        <div *ngFor="let commentaire of (restaurant$ | async).data[id].commentaire" class="centrer-commentaire">
+
+      <div
+        *ngIf="listeRestaurants[id].nombreCommentaire"
+      >
+        <div 
+          *ngFor="let commentaire of listeRestaurants[id].commentaire"
+          class="mb-2"
+        >
           <ul>
-            <li><span class="categories-fiche">Auteur : </span>{{commentaire.auteur}}</li>
-            <li><span class="categories-fiche">Commentaire : </span>{{commentaire.texte}}</li>
+            <li><span class="font-weight-bold">Auteur : </span>{{commentaire.auteur}}</li>
+            <li><span class="font-weight-bold">Commentaire : </span>{{commentaire.texte}}</li>
           </ul>
         </div>
+
       </div>
 
     </div>
-    
-</div>
-<div>
-  <div class="visuel-message-confirmation">
 
-    <div class={{confirmationEnvoiCommentaire}}>
-      <span>Le commentaire a bien été envoyé !</span>
-    </div>
+  </div>
+  
+  <div class="row justify-content-center">
 
-    <ngb-alert class="visuel-message-confirmation {{confirmationEnvoiNote}}" type="success" [dismissible]="false">
+    <ngb-alert 
+      *ngIf="commentaireEnvoye"
+      class="col-4 font-weight-bold text-center"
+      type="success"
+      [dismissible]="false"
+    >
+      Le commentaire a bien été envoyé !
+    </ngb-alert>
+
+    <ngb-alert
+      *ngIf="noteEnvoyee"
+      class="col-4 font-weight-bold text-center"
+      type="success"
+      [dismissible]="false"
+    >
       La note a bien été envoyée !
     </ngb-alert>
 
   </div>
 
-  <div>
+</div>
 
-    <span *ngIf="formulaireCommentaire === 'cacher-formulaire-commentaire'">
-        <span *ngIf="formulaireNote === 'cacher-formulaire-note'" >
-          <input 
-            type="button" value="Ajouter une note" 
-            class="btn btn-primary margin-bouton-note" (click)="cacherVisibleNote(); cacherFicheRestaurant()"
-          />
-        </span>
-        <span *ngIf="formulaireNote !== 'cacher-formulaire-note'" >
-          <input 
-            type="button" value="Annuler cette note" 
-            class="btn btn-primary margin-bouton-note-seul" (click)="cacherVisibleNote(); cacherFicheRestaurant()"
-          />
-        </span>
-    </span>
+<div class="row justify-content-center mt-5">
 
-    <span *ngIf="formulaireNote === 'cacher-formulaire-note'">
-        <span class="aligner" *ngIf="formulaireCommentaire === 'cacher-formulaire-commentaire'" >
-          <input
-            type="button" value="Ajouter un commentaire" 
-            class="btn btn-primary margin-bouton-commentaire" (click)="cacherVisibleCommentaire(); cacherFicheRestaurant()"
-          />
-        </span>
-        <span class="centrer-bouton" *ngIf="formulaireCommentaire !== 'cacher-formulaire-commentaire'">
-          <input
-            type="button" value="Annuler ce commentaire" 
-            class="btn btn-primary margin-bouton-commentaire-seul" (click)="cacherVisibleCommentaire(); cacherFicheRestaurant()"
-          />
-        </span>
-    </span>
+  <span *ngIf="detailRestaurant">
+    <button 
+      type="button"
+      class="btn btn-secondary mx-4" 
+      (click)="cacherFiche()"
+    >
+      Ajouter une note
+    </button>
+  </span>
 
-  </div>
+  <span *ngIf="formulaireNote">
+    <button 
+      type="button"
+      class="btn btn-danger mx-4 mb-3" 
+      (click)="montrerFiche()"
+    >
+      Annuler cette note
+    </button>
+  </span>
 
-  <div class={{formulaireCommentaire}}>
-    <app-ajouter-commentaire></app-ajouter-commentaire>
-  </div>
+  <span *ngIf="detailRestaurant">
+    <button 
+      type="button"
+      class="btn btn-primary mx-4" 
+      (click)="cacherVisibleNote(); cacherFicheRestaurant()"
+    >
+      Ajouter un commentaire
+    </button>
+  </span>
 
-  <div class={{formulaireNote}}>
-    <app-ajouter-note></app-ajouter-note>
-  </div>
+  <span *ngIf="formulaireComm">
+    <button 
+      type="button"
+      class="btn btn-danger mx-4" 
+      (click)="cacherVisibleNote(); cacherFicheRestaurant()"
+    >
+      Annuler ce commentaire
+    </button>
+  </span>
 
+</div>
+
+<div *ngIf="formulaireComm">
+  <app-ajouter-commentaire></app-ajouter-commentaire>
+</div>
+
+<div *ngIf="formulaireNote">
+  <app-ajouter-note></app-ajouter-note>
 </div>

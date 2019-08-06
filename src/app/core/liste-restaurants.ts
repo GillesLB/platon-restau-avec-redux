@@ -2,19 +2,19 @@ import { Restaurant } from './restaurant';
 
 export const restaurants: Restaurant[] = [
   // tslint:disable-next-line:max-line-length
-  {'check': false, 'nom': 'Le plan B', 'adresse': '15 rue Jean Jacques Rousseau', 'dateDerniereVisite': '12/02/2019', 'note': null, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.211665, 'longitude': -1.546741, 'commentaire': [], 'restaurantId': 0},
+  {'check': false, 'nom': 'Le plan B', 'adresse': '15 rue Jean Jacques Rousseau', 'dateDerniereVisite': '12/02/2019', 'note': null, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.211665, 'longitude': -1.546741, 'commentaire': [{'auteur': 'Antoine', 'texte': 'Kampai !'}, {'auteur': 'Nicolas', 'texte': 'ng::deep forever.'}], 'restaurantId': 0},
   // tslint:disable-next-line:max-line-length
-  {'check': false, 'nom': 'Bento Sakura', 'adresse': '17 rue Louis Blanc', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.206266, 'longitude': -1.554663, 'commentaire': [], 'restaurantId': 1},
+  {'check': false, 'nom': 'Bento Sakura', 'adresse': '17 rue Louis Blanc', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 0, 'latitude': 47.206266, 'longitude': -1.554663, 'commentaire': [], 'restaurantId': 1},
   // tslint:disable-next-line:max-line-length
-  {'check': false, 'nom': 'La grande barge', 'adresse': '8 rue grande biesse', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.206662, 'longitude': -1.549185, 'commentaire': [], 'restaurantId': 2},
+  {'check': false, 'nom': 'La grande barge', 'adresse': '8 rue grande biesse', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 0, 'latitude': 47.206662, 'longitude': -1.549185, 'commentaire': [], 'restaurantId': 2},
   // tslint:disable-next-line:max-line-length
-  {'check': false, 'nom': 'Le grand B', 'adresse': '43 rue grande biessa', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.205504, 'longitude': -1.548631, 'commentaire': [], 'restaurantId': 3},
+  {'check': false, 'nom': 'Le grand B', 'adresse': '43 rue grande biessa', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 0, 'latitude': 47.205504, 'longitude': -1.548631, 'commentaire': [], 'restaurantId': 3},
   // tslint:disable-next-line:max-line-length
-  {'check': false, 'nom': 'Le melting potes', 'adresse': '26 bd de la prairie au Duc', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.205181, 'longitude': -1.557784, 'commentaire': [], 'restaurantId': 4},
+  {'check': false, 'nom': 'Le melting potes', 'adresse': '26 bd de la prairie au Duc', 'dateDerniereVisite': '03/02/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 0, 'latitude': 47.205181, 'longitude': -1.557784, 'commentaire': [], 'restaurantId': 4},
   // tslint:disable-next-line:max-line-length
-  {'check': false, 'nom': 'Le Louis Blanc', 'adresse': '2 bd Victor Hugo', 'dateDerniereVisite': '01/08/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.207247, 'longitude': -1.555297, 'commentaire': [], 'restaurantId': 5},
+  {'check': false, 'nom': 'Le Louis Blanc', 'adresse': '2 bd Victor Hugo', 'dateDerniereVisite': '01/08/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 0, 'latitude': 47.207247, 'longitude': -1.555297, 'commentaire': [], 'restaurantId': 5},
   // tslint:disable-next-line:max-line-length
-  {'check': false, 'nom': 'Les fonderies', 'adresse': '2 bd Victor Hugo', 'dateDerniereVisite': '01/08/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 2, 'latitude': 47.206011, 'longitude': -1.545338, 'commentaire': [], 'restaurantId': 6},
+  {'check': false, 'nom': 'Les fonderies', 'adresse': '25 bd Vincent Gâche', 'dateDerniereVisite': '01/08/2019', 'note': 2, 'nombreVisite': 1, 'nombreCommentaire': 0, 'latitude': 47.206011, 'longitude': -1.545338, 'commentaire': [], 'restaurantId': 6},
 ];
 
 // Ancienne version

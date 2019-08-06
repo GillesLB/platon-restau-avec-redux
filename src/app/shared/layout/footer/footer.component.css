@@ -1,34 +1,5 @@
-.fond-footer {
+.footer {
     background-color: rgb(236, 250, 248);
-}
-
-.texte-footer {
-    font-weight: bold;
     font-size: 18px;
-}
-
-.ancrage-footer {
-    position: fixed;
-    bottom: 0px;
-}
-
-.taille-footer {
-    width: 100%;
-}
-
-.centrer-texte-vertical {
-    margin: auto;
     line-height: 50px;
-}
-
-.texte-gauche {
-    text-align: left;
-    margin-left: 5%;
-    display: inline-block;
-}
-
-.texte-droite {
-    text-align: right;
-    margin-right: 5%;
-    float: right;
 }

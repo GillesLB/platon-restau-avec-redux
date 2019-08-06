@@ -1,30 +1,32 @@
-<div class="espace-haut"></div>
+<div class="row justify-content-center">
+  <div class="border border-secondary bg-light col-4">
+    <form>
 
-<!-- <div class="titre-page">Choisissez votre note : </div> -->
+      <div class="titre-page font-weight-bold text-center my-3">Choisissez votre note : </div>
+    
+      <div class="row justify-content-center">
 
-<div class="centrer-formulaire margin-bottom">
-  <form>
-
-    <div *ngFor="let note of notes">
-      <div class="margin-etoile">
-        <label class="titre-formulaire largeur-choix">{{note.avis}}</label>
-        <div class="aligner largeur-input droite">
-          <input  class="droite" type="radio" 
-          name="note-radio" value={{note.note}}
-          (change)="changementEtatBoutonRadio($event)"
-          />
-          <img src={{note.image}} />
-        </div>
+        <select class="form-control col-8 mb-3">
+          <option
+            *ngFor="let note of notes"
+            [value]="note.note"
+          >
+            {{note.avis}} note de {{note.note}} sur 5
+          </option>
+        </select>
+        
       </div>
-    </div>
 
-    <input class="btn btn-primary margin-bouton-envoyer" type="submit"  
-          name="bouton-envoyer" id="bouton-envoyer"
-          value="Envoyer la note" (click)="envoyerNote()"
-          (click)="cacherMessageConfirmationEnvoiNote()"
-    />
-  
-  </form>
+      <div class="row justify-content-center">
+        <button
+          class="btn btn-success mt-3 mb-4"
+          type="submit"  
+          (click)="envoyerNote()"
+        >
+          Envoyer la note
+        </button>
+      </div>
+
+    </form>
+  </div>
 </div>
-
-<div class="espace-haut"></div>
