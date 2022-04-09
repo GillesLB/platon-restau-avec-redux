@@ -31,7 +31,7 @@
     "core-js": "^2.6.9",
     "jquery": "^1.12.4",
     "leaflet": "^1.5.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ngx-moment": "^3.4.0",
     "ngx-pagination": "^4.1.0",
     "popper.js": "^1.15.0",
